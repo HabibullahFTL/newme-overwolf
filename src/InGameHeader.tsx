@@ -1,7 +1,7 @@
+import { OWWindow } from '@overwolf/overwolf-api-ts/dist';
 import clsx from 'clsx';
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { OWWindow } from '@overwolf/overwolf-api-ts/dist';
 import { AppContext } from './contexts/AppContext';
 import { globalLayers } from './globalLayers';
 import CloseIcon from './Icons/CloseIcon';
@@ -225,7 +225,7 @@ export default function InGameHeader() {
             <div ref={draggable} className={classes.draggable}>
                 <span>
                     <span>{inGameAppTitle}</span>
-                    {hotkeyText && <span className={classes.hotkey}>({hotkeyText})</span>}
+                    {/* {hotkeyText && <span className={classes.hotkey}>({hotkeyText})</span>} */}
                 </span>
             </div>
             <div className={classes.buttons}>

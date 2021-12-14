@@ -1,179 +1,191 @@
-import { initializeDynamicSettings } from '@/logic/dynamicSettings';
-import { initializeHooks } from '@/logic/hooks';
-import { initializeNavigation } from '@/logic/navigation/navigation';
-import { load } from '@/logic/storage';
-import UnloadingEvent from '@/logic/unloadingEvent';
-import { OWGameListener, OWGames, OWWindow } from '@overwolf/overwolf-api-ts';
-import { initializeHotkeyManager } from '../../logic/hotkeyManager';
-import { initializeTileCache } from '../../logic/tileCache';
-import { initializeTileMarkerCache } from '../../logic/tileMarkerCache';
-import { BackgroundWindow, ConcreteWindow, newWorldId, windowNames } from '../consts';
+import { initializeHooks } from "@/logic/hooks";
+import { load } from "@/logic/storage";
+import UnloadingEvent from "@/logic/unloadingEvent";
+import { OWGameListener, OWGames, OWWindow } from "@overwolf/overwolf-api-ts";
+import { initializeHotkeyManager } from "../../logic/hotkeyManager";
+import {
+  BackgroundWindow,
+  ConcreteWindow,
+  newWorldId,
+  windowNames,
+} from "../consts";
 
 import RunningGameInfo = overwolf.games.RunningGameInfo;
 import WindowState = overwolf.windows.WindowStateEx;
 
 export type BackgroundControllerWindow = typeof window & {
-    backgroundController: BackgroundController;
-}
+  backgroundController: BackgroundController;
+};
 
 type GameRunningEventListener = (gameRunning: boolean) => void;
 
-const bringToFrontWindowStates: string[] = [WindowState.MAXIMIZED, WindowState.NORMAL];
+const bringToFrontWindowStates: string[] = [
+  WindowState.MAXIMIZED,
+  WindowState.NORMAL,
+];
 
 export class BackgroundController {
-    private static _instance: BackgroundController;
-    private _windows: Record<BackgroundWindow | ConcreteWindow, OWWindow>;
-    private _openWindows = new Set<ConcreteWindow>();
-    private _NewWorldGameListener: OWGameListener;
-    private _gameRunning = false;
-    private _gameRunningEvent = new UnloadingEvent<GameRunningEventListener>('gameRunning');
+  private static _instance: BackgroundController;
+  private _windows: Record<BackgroundWindow | ConcreteWindow, OWWindow>;
+  private _openWindows = new Set<ConcreteWindow>();
+  private _NewWorldGameListener: OWGameListener;
+  private _gameRunning = false;
+  private _gameRunningEvent = new UnloadingEvent<GameRunningEventListener>(
+    "gameRunning"
+  );
 
-    private constructor() {
-        this._windows = {
-            background: new OWWindow(windowNames.background),
-            desktop: new OWWindow(windowNames.desktop),
-            inGame: new OWWindow(windowNames.inGame),
-        };
+  private constructor() {
+    this._windows = {
+      background: new OWWindow(windowNames.background),
+      desktop: new OWWindow(windowNames.desktop),
+      inGame: new OWWindow(windowNames.inGame),
+    };
 
-        this._NewWorldGameListener = new OWGameListener({
-            onGameStarted: this.onGameStarted,
-            onGameEnded: this.onGameEnded,
-        });
+    this._NewWorldGameListener = new OWGameListener({
+      onGameStarted: this.onGameStarted,
+      onGameEnded: this.onGameEnded,
+    });
 
-        if (!NWMM_APP_BUILD_PRODUCTION) {
-            this.debug_setGameRunning = (running: boolean) => {
-                this._gameRunning = running;
-                this._gameRunningEvent.fire(running);
-            };
-        }
+    if (!NWMM_APP_BUILD_PRODUCTION) {
+      this.debug_setGameRunning = (running: boolean) => {
+        this._gameRunning = running;
+        this._gameRunningEvent.fire(running);
+      };
+    }
+  }
+
+  public static get isSupported() {
+    return NWMM_APP_WINDOW === "background";
+  }
+
+  // Implementing the Singleton design pattern
+  public static get instance(): BackgroundController {
+    if (!this.isSupported) {
+      throw new Error(
+        "Using BackgroundController directly in this window is not supported."
+      );
     }
 
-    public static get isSupported() {
-        return NWMM_APP_WINDOW === 'background';
+    if (!BackgroundController._instance) {
+      BackgroundController._instance = new BackgroundController();
     }
 
-    // Implementing the Singleton design pattern
-    public static get instance(): BackgroundController {
-        if (!this.isSupported) {
-            throw new Error('Using BackgroundController directly in this window is not supported.');
-        }
+    return BackgroundController._instance;
+  }
 
-        if (!BackgroundController._instance) {
-            BackgroundController._instance = new BackgroundController();
-        }
+  public get gameRunning() {
+    return this._gameRunning;
+  }
 
-        return BackgroundController._instance;
+  public run = async () => {
+    this._NewWorldGameListener.start();
+    // Decide whether to start the in-game or desktop window when running
+    const running = await this.isNewWorldRunning();
+    const alwaysLaunchDesktop = load("alwaysLaunchDesktop");
+
+    if (!running) {
+      await this.openWindow("desktop");
+    } else {
+      if (alwaysLaunchDesktop) {
+        await this.openWindow("desktop");
+      }
+      // Always launch the in-game window in this branch, otherwise
+      // no windows would be displayed.
+      await this.openWindow("inGame");
     }
+  };
 
-    public get gameRunning() {
-        return this._gameRunning;
-    }
-
-    public run = async () => {
-        this._NewWorldGameListener.start();
-        // Decide whether to start the in-game or desktop window when running
-        const running = await this.isNewWorldRunning();
-        const alwaysLaunchDesktop = load('alwaysLaunchDesktop');
-
-        if (!running) {
-            await this.openWindow('desktop');
-        } else {
-            if (alwaysLaunchDesktop) {
-                await this.openWindow('desktop');
-            }
-            // Always launch the in-game window in this branch, otherwise
-            // no windows would be displayed.
-            await this.openWindow('inGame');
-        }
-    }
-
-    public async openWindow(window: ConcreteWindow) {
-        if (this._openWindows.has(window)) {
-            const windowState = await this._windows[window].getWindowState();
-            if (windowState.window_state && bringToFrontWindowStates.includes(windowState.window_state)) {
-                overwolf.windows.obtainDeclaredWindow(window, wnd => {
-                    if (wnd.success) {
-                        overwolf.windows.bringToFront(wnd.window.id, () => { /* Ignore the result of bringToFront */ });
-                    } else {
-                        this._windows[window].restore();
-                    }
-                });
-            } else {
-                this._windows[window].restore();
-            }
-        } else {
+  public async openWindow(window: ConcreteWindow) {
+    if (this._openWindows.has(window)) {
+      const windowState = await this._windows[window].getWindowState();
+      if (
+        windowState.window_state &&
+        bringToFrontWindowStates.includes(windowState.window_state)
+      ) {
+        overwolf.windows.obtainDeclaredWindow(window, (wnd) => {
+          if (wnd.success) {
+            overwolf.windows.bringToFront(wnd.window.id, () => {
+              /* Ignore the result of bringToFront */
+            });
+          } else {
             this._windows[window].restore();
-        }
-
-        this._openWindows.add(window);
+          }
+        });
+      } else {
+        this._windows[window].restore();
+      }
+    } else {
+      this._windows[window].restore();
     }
 
-    public closeWindow(window: ConcreteWindow) {
-        this._openWindows.delete(window);
-        this._windows[window].close();
+    this._openWindows.add(window);
+  }
 
-        this.exitIfNoWindowsOpen();
+  public closeWindow(window: ConcreteWindow) {
+    this._openWindows.delete(window);
+    this._windows[window].close();
+
+    this.exitIfNoWindowsOpen();
+  }
+
+  public listenOnGameRunningChange = this._gameRunningEvent.register;
+
+  public debug_setGameRunning = (running: boolean) => {
+    console.log(
+      `Attempted to set gameRunning to ${running}, but this was a no-op.`
+    );
+  };
+
+  private onGameStarted = async (info: RunningGameInfo) => {
+    if (!info || !this.isGameNewWorld(info)) {
+      return;
     }
 
-    public listenOnGameRunningChange = this._gameRunningEvent.register;
+    this._gameRunning = true;
+    if (load("autoLaunchInGame")) {
+      this.openWindow("inGame");
+    }
+    this._gameRunningEvent.fire(true);
+  };
 
-    public debug_setGameRunning = (running: boolean) => {
-        console.log(`Attempted to set gameRunning to ${running}, but this was a no-op.`);
+  private onGameEnded = async (info: RunningGameInfo) => {
+    if (!info || !this.isGameNewWorld(info)) {
+      return;
     }
 
-    private onGameStarted = async (info: RunningGameInfo) => {
-        if (!info || !this.isGameNewWorld(info)) {
-            return;
-        }
+    this._gameRunning = false;
+    this.closeWindow("inGame");
+    this._gameRunningEvent.fire(false);
+  };
 
-        this._gameRunning = true;
-        if (load('autoLaunchInGame')) {
-            this.openWindow('inGame');
-        }
-        this._gameRunningEvent.fire(true);
-    };
+  private async isNewWorldRunning(): Promise<boolean> {
+    const info = await OWGames.getRunningGameInfo();
+    return info && info.isRunning && this.isGameNewWorld(info);
+  }
 
-    private onGameEnded = async (info: RunningGameInfo) => {
-        if (!info || !this.isGameNewWorld(info)) {
-            return;
-        }
+  private isGameNewWorld = (info: RunningGameInfo) => {
+    return info.classId === newWorldId;
+  };
 
-        this._gameRunning = false;
-        this.closeWindow('inGame');
-        this._gameRunningEvent.fire(false);
-
-    };
-
-    private async isNewWorldRunning(): Promise<boolean> {
-        const info = await OWGames.getRunningGameInfo();
-        return info && info.isRunning && this.isGameNewWorld(info);
+  private exitIfNoWindowsOpen = () => {
+    if (this._openWindows.size === 0) {
+      this._windows.background.close();
     }
-
-    private isGameNewWorld = (info: RunningGameInfo) => {
-        return info.classId === newWorldId;
-    }
-
-    private exitIfNoWindowsOpen = () => {
-        if (this._openWindows.size === 0) {
-            this._windows.background.close();
-        }
-    }
+  };
 }
 
 export function getBackgroundController() {
-    // Each window has its own BackgroundController, due to how modules are loaded with webpack
-    // Make sure to get the instance from the background window, as that is the one with the correct state
-    return (overwolf.windows.getMainWindow().window as BackgroundControllerWindow).backgroundController;
+  // Each window has its own BackgroundController, due to how modules are loaded with webpack
+  // Make sure to get the instance from the background window, as that is the one with the correct state
+  return (overwolf.windows.getMainWindow().window as BackgroundControllerWindow)
+    .backgroundController;
 }
 
 if (BackgroundController.isSupported) {
-    BackgroundController.instance.run();
-    (window as BackgroundControllerWindow).backgroundController = BackgroundController.instance;
+  BackgroundController.instance.run();
+  (window as BackgroundControllerWindow).backgroundController =
+    BackgroundController.instance;
 }
 
-initializeDynamicSettings();
 initializeHooks();
-initializeTileCache();
-initializeTileMarkerCache();
 initializeHotkeyManager();
-initializeNavigation();

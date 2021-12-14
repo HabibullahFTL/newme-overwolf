@@ -1,4 +1,0 @@
-{
-    "friendServerEndpoint": "https://nw-minimap.herokuapp.com/data/update",
-    "channelsServerEndpoint": "https://nw-minimap.herokuapp.com/data/channel"
-}

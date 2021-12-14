@@ -141,7 +141,10 @@ export default function DesktopHeader() {
     }
 
     return <header className={clsx(classes.root, useTransparency && classes.transparent, !context.settings.showHeader && classes.hidden)}>
-        <div ref={draggable} className={classes.draggable} onDoubleClick={handleMaximizeRestore}>
+        <div
+            ref={draggable}
+            //  onDoubleClick={handleMaximizeRestore}
+            className={classes.draggable}>
             <span>{desktopAppTitle}</span>
         </div>
         <div className={classes.buttons}>
@@ -154,7 +157,9 @@ export default function DesktopHeader() {
             <button className={clsx(classes.controlButton)} onClick={handleMinimize}>
                 <Minimizeicon />
             </button>
-            <button className={clsx(classes.controlButton)} onClick={handleMaximizeRestore}>
+            <button
+                // onClick={handleMaximizeRestore}
+                className={clsx(classes.controlButton)} >
                 {maximized
                     ? <RestoreIcon />
                     : <MaximizeIcon />
