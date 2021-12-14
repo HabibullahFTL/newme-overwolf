@@ -1,15 +1,13 @@
+import { OWWindow } from '@overwolf/overwolf-api-ts/dist';
 import clsx from 'clsx';
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { OWWindow } from '@overwolf/overwolf-api-ts/dist';
 import { AppContext } from './contexts/AppContext';
 import { globalLayers } from './globalLayers';
 import CloseIcon from './Icons/CloseIcon';
-import DesktopWindowIcon from './Icons/DesktopWindowIcon';
 import MaximizeIcon from './Icons/MaximizeIcon';
 import Minimizeicon from './Icons/MinimizeIcon';
 import RestoreIcon from './Icons/RestoreIcon';
-import SettingsIcon from './Icons/SettingsIcon';
 import { getBackgroundController } from './OverwolfWindows/background/background';
 import { windowNames } from './OverwolfWindows/consts';
 import { desktopAppTitle } from './OverwolfWindows/desktop/desktop';
@@ -72,6 +70,7 @@ const useStyles = makeStyles()(theme => ({
         '& > svg': {
             width: 30,
             height: 30,
+            marginLeft: "6px"
         },
     },
     close: {
@@ -87,6 +86,8 @@ const useStyles = makeStyles()(theme => ({
 const backgroundController = getBackgroundController();
 export default function DesktopHeader() {
     const context = useContext(AppContext);
+    console.log(context);
+
     const { classes } = useStyles();
     const { t } = useTranslation();
 
@@ -144,12 +145,12 @@ export default function DesktopHeader() {
             <span>{desktopAppTitle}</span>
         </div>
         <div className={classes.buttons}>
-            {context.gameRunning && <button className={clsx(classes.controlButton)} onClick={handleShowInGameWindow} title={t('header.openInGame')}>
+            {/* {context.gameRunning && <button className={clsx(classes.controlButton)} onClick={handleShowInGameWindow} title={t('header.openInGame')}>
                 <DesktopWindowIcon />
-            </button>}
-            <button className={clsx(classes.controlButton)} onClick={context.toggleFrameMenu} title={t('header.settings')}>
+            </button>} */}
+            {/* <button className={clsx(classes.controlButton)} onClick={context.toggleFrameMenu} title={t('header.settings')}>
                 <SettingsIcon />
-            </button>
+            </button> */}
             <button className={clsx(classes.controlButton)} onClick={handleMinimize}>
                 <Minimizeicon />
             </button>

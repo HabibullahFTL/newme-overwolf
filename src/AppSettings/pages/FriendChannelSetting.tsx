@@ -1,12 +1,12 @@
+import Button from '@/Button';
+import { deleteChannel, putChannel, StoredChannel, updateChannel } from '@/logic/friends';
+import { generateRandomToken } from '@/logic/util';
+import { makeStyles } from '@/theme';
 import clsx from 'clsx';
 import { isEqual } from 'lodash';
 import React, { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { validate as validateUuid } from 'uuid';
-import Button from '@/Button';
-import { deleteChannel, putChannel, StoredChannel, updateChannel } from '@/logic/friends';
-import { generateRandomToken } from '@/logic/util';
-import { makeStyles } from '@/theme';
 import { useSharedSettingsStyles } from '../sharedSettingStyles';
 
 interface IProps {

@@ -7,7 +7,7 @@ const OverwolfPlugin = require('./overwolf.webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 
-const appName = "CptWesley's Minimap";
+const appName = "New.Me Map";
 const appVersion = require('./package.json').version;
 const appDate = new Date().toISOString();
 
