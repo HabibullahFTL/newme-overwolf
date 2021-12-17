@@ -2,12 +2,18 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>CptWesley's Minimap</title>
+    <title>New.Me Map</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
     <link rel="stylesheet" href="/css/style.css" />
   </head>
 
-  <body style="overflow: hidden">
+  <body style="overflow: hidden; margin: 0">
     <div id="app"></div>
     <script>
       const NWMM_APP_WINDOW = "desktop";

@@ -16,7 +16,6 @@ import { makeStyles } from './theme';
 const useStyles = makeStyles()(theme => ({
     root: {
         display: 'flex',
-
         background: theme.headerBackground,
         color: theme.headerColor,
         height: theme.headerHeight,
@@ -98,7 +97,6 @@ export default function DesktopHeader() {
     const draggable = useRef<HTMLDivElement | null>(null);
     const [maximized, setMaximized] = useState(false);
 
-    const useTransparency = context.settings.transparentHeader && context.gameRunning && !context.appSettingsVisible;
 
     useEffect(() => {
         if (draggable.current) {
@@ -140,34 +138,36 @@ export default function DesktopHeader() {
         backgroundController.closeWindow('desktop');
     }
 
-    return <header className={clsx(classes.root, useTransparency && classes.transparent, !context.settings.showHeader && classes.hidden)}>
-        <div
-            ref={draggable}
-            //  onDoubleClick={handleMaximizeRestore}
-            className={classes.draggable}>
-            <span>{desktopAppTitle}</span>
-        </div>
-        <div className={classes.buttons}>
-            {/* {context.gameRunning && <button className={clsx(classes.controlButton)} onClick={handleShowInGameWindow} title={t('header.openInGame')}>
+    return (
+        <header className={clsx(classes.root)}>
+            <div
+                ref={draggable}
+                //  onDoubleClick={handleMaximizeRestore}
+                className={classes.draggable}>
+                <span>{desktopAppTitle}</span>
+            </div>
+            <div className={classes.buttons}>
+                {/* {context.gameRunning && <button className={clsx(classes.controlButton)} onClick={handleShowInGameWindow} title={t('header.openInGame')}>
                 <DesktopWindowIcon />
             </button>} */}
-            {/* <button className={clsx(classes.controlButton)} onClick={context.toggleFrameMenu} title={t('header.settings')}>
+                {/* <button className={clsx(classes.controlButton)} onClick={context.toggleFrameMenu} title={t('header.settings')}>
                 <SettingsIcon />
             </button> */}
-            <button className={clsx(classes.controlButton)} onClick={handleMinimize}>
-                <Minimizeicon />
-            </button>
-            <button
-                // onClick={handleMaximizeRestore}
-                className={clsx(classes.controlButton)} >
-                {maximized
-                    ? <RestoreIcon />
-                    : <MaximizeIcon />
-                }
-            </button>
-            <button className={clsx(classes.controlButton, classes.close)} onClick={handleClose}>
-                <CloseIcon />
-            </button>
-        </div>
-    </header>;
+                <button className={clsx(classes.controlButton)} onClick={handleMinimize}>
+                    <Minimizeicon />
+                </button>
+                <button
+                    // onClick={handleMaximizeRestore}
+                    className={clsx(classes.controlButton)} >
+                    {maximized
+                        ? <RestoreIcon />
+                        : <MaximizeIcon />
+                    }
+                </button>
+                <button className={clsx(classes.controlButton, classes.close)} onClick={handleClose}>
+                    <CloseIcon />
+                </button>
+            </div>
+        </header>
+    );
 }

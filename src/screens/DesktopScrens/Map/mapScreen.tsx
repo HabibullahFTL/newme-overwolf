@@ -1,10 +1,14 @@
-import { DesktopLayout } from "@/components/Layouts/DekstopLayout/DesktopLayout"
+import { FilterBox, Map, MapController, SidebarAd, VideoAd } from "@/components/Common"
 import React from "react"
 
 export const MapScreen = () => {
     return (
-        <DesktopLayout>
-            This is map Layout
-        </DesktopLayout>
+        <>
+            <Map />
+            <MapController />
+            <FilterBox />
+            <VideoAd />
+            <SidebarAd />
+        </>
     )
 }

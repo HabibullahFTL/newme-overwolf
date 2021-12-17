@@ -1,3 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica:ital@0;1&display=swap");
+
+.font-imfell {
+    font-family: "IM Fell DW Pica", serif;
+}
+.font-arial {
+    font-family: "Arial", serif;
+}
+
+/* Background colors */
+.bg-dark1 {
+    background: #17161a !important;
+}
+.bg-dark2 {
+    background: #212027 !important;
+}
+.bg-dark3 {
+    background: #1d1c23 !important;
+}
+.bg-dark4 {
+    background: #141414 !important;
+}
+.bg-dark5 {
+    background: #474852 !important;
+}
+.bg-dark6 {
+    background: #141216 !important;
+}
+.bg-gray1 {
+    background: #535770 !important;
+}
+.bg-gray2 {
+    background: #5a5a5a !important;
+}
+.bg-yellow1 {
+    background: #f6b50c !important;
+}
+.bg-yellow2 {
+    background: #ffb800 !important;
+}
+
+/* Background gradients */
+.bg-gradient-yellow {
+    background: linear-gradient(to bottom, #f6b50c, #ffb800) !important;
+}
+.bg-gradient-dark {
+    background: linear-gradient(to bottom, #141414, #5a5a5a) !important;
+}
+
+/* Text colors  */
+.text-dark1 {
+    color: #17161a !important;
+}
+.text-dark2 {
+    color: #212027 !important;
+}
+.text-dark3 {
+    color: #1d1c23 !important;
+}
+.text-dark4 {
+    color: #141414 !important;
+}
+.text-dark5 {
+    color: #474852 !important;
+}
+.text-dark6 {
+    color: #141216 !important;
+}
+.text-gray1 {
+    color: #535770 !important;
+}
+.text-gray2 {
+    color: #5a5a5a !important;
+}
+.text-yellow1 {
+    color: #f6b50c !important;
+}
+.text-yellow2 {
+    color: #ffb800 !important;
+}
+
+/* Text Sizes  */
+.text-xxs {
+    font-size: 11px;
+}
+
+/* border colors  */
+.border-dark1 {
+    border-color: #17161a !important;
+}
+.border-dark2 {
+    border-color: #212027 !important;
+}
+.border-dark3 {
+    border-color: #1d1c23 !important;
+}
+.border-dark4 {
+    border-color: #141414 !important;
+}
+.border-dark5 {
+    border-color: #474852 !important;
+}
+.border-dark6 {
+    border-color: #141216 !important;
+}
+.border-gray1 {
+    border-color: #535770 !important;
+}
+.border-gray2 {
+    border-color: #5a5a5a !important;
+}
+.border-yellow1 {
+    border-color: #f6b50c !important;
+}
+.border-yellow2 {
+    border-color: #ffb800 !important;
+}
+
+/* Webkit classes */
+.webkit-appearance {
+    -webkit-appearance: none;
+}
+
 /* Hide scrollbar for Chrome, Safari and Opera */
 .scrollbar-hidden::-webkit-scrollbar {
     display: none;
@@ -7,4 +130,71 @@
 .scrollbar-hidden {
     -ms-overflow-style: none;
     scrollbar-width: none; /* Firefox */
+}
+/* ============ [Custom Scroll bar] ============ */
+/* custom scroll bar  Chrome*/
+.scrollbar::-webkit-scrollbar {
+    width: 7px;
+}
+.scrollbar::-webkit-scrollbar-track {
+    background: #111111;
+    border-radius: 15px;
+}
+.scrollbar::-webkit-scrollbar-thumb {
+    background: #ffb800 !important;
+    border-radius: 15px;
+}
+.scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #f7b100 !important;
+}
+/* Custom scroll bar Firefox */
+.scrollbar:root {
+    overflow-y: scroll;
+    border-radius: 15px;
+    scrollbar-color: #ffb800 #111111 !important;
+    scrollbar-width: 7px !important;
+}
+
+/* For Desktop Layout */
+.mainWrapper {
+    height: calc(100vh - 32px);
+    background: #17161a !important;
+}
+.childrenWrapper {
+    height: calc(100vh - 88px);
+}
+
+/* For Range Thumb  */
+.range {
+    display: block;
+    width: 100%;
+    height: 0;
+    z-index: 5;
+    -webkit-appearance: none;
+}
+.range::-webkit-slider-thumb {
+    width: 1.75rem;
+    height: 1.75rem;
+    background: transparent;
+    z-index: 5;
+    -webkit-appearance: none;
+}
+.range::-moz-range-thumb {
+    width: 1.75rem;
+    height: 1.75rem;
+    background: transparent;
+    z-index: 5;
+}
+.range::-ms-thumb {
+    width: 1.75rem;
+    height: 1.75rem;
+    background: transparent;
+    z-index: 5;
+}
+
+/* Main Map Css */
+.leaflet-container {
+    width: 100%;
+    height: 100%;
+    background: #1d1c23 !important;
 }
