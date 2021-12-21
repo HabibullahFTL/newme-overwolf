@@ -18934,142 +18934,6 @@
                 "min_level": 34,
                 "u": 1624643778287
             }
-        },
-        "varangian": {
-            "-Mol7oI8pw0QCYmlBB7Z": {
-                "center": [
-                    1254.594,
-                    9111.20601645115
-                ],
-                "latlngs": [
-                    [
-                        1289.75,
-                        9043.5
-                    ],
-                    [
-                        1269.5,
-                        9061.25
-                    ],
-                    [
-                        1236.75,
-                        9076.5
-                    ],
-                    [
-                        1228.25,
-                        9112.5
-                    ],
-                    [
-                        1213.25,
-                        9127.25
-                    ],
-                    [
-                        1209.5,
-                        9141.25
-                    ],
-                    [
-                        1234,
-                        9177.25
-                    ],
-                    [
-                        1258.75,
-                        9153.5
-                    ],
-                    [
-                        1288.75,
-                        9108.75
-                    ],
-                    [
-                        1295.25,
-                        9064.5
-                    ]
-                ],
-                "max_level": 20,
-                "min_level": 18,
-                "u": 1637206934750
-            },
-            "-MolFUI8z_ak9VJJFQUQ": {
-                "center": [
-                    3969.137,
-                    7404.460147484619
-                ],
-                "group": false,
-                "latlngs": [
-                    [
-                        4059.75,
-                        7419.25
-                    ],
-                    [
-                        4048.5,
-                        7446.25
-                    ],
-                    [
-                        4001.25,
-                        7448.25
-                    ],
-                    [
-                        3949,
-                        7442.5
-                    ],
-                    [
-                        3915.75,
-                        7433.25
-                    ],
-                    [
-                        3894.25,
-                        7418.5
-                    ],
-                    [
-                        3883.75,
-                        7390.25
-                    ],
-                    [
-                        3909.25,
-                        7364.75
-                    ],
-                    [
-                        3977.75,
-                        7351
-                    ]
-                ],
-                "max_level": 19,
-                "min_level": 17,
-                "u": 1637208945839
-            },
-            "-MolPCT8gEOUDHw9vxah": {
-                "center": [
-                    4391.198,
-                    8433.441447672878
-                ],
-                "latlngs": [
-                    [
-                        4468.75,
-                        8427
-                    ],
-                    [
-                        4463.25,
-                        8395.5
-                    ],
-                    [
-                        4363,
-                        8394
-                    ],
-                    [
-                        4319.25,
-                        8426.5
-                    ],
-                    [
-                        4340,
-                        8479
-                    ],
-                    [
-                        4392.5,
-                        8481.75
-                    ]
-                ],
-                "max_level": 18,
-                "min_level": 16,
-                "u": 1637211494197
-            }
         }
     },
     "chests": {
@@ -19684,16 +19548,6 @@
             }
         },
         "cl1": {
-            "-MoiLMhrnJZfmL5EmS9b": {
-                "u": 1637160156028,
-                "x": 9147,
-                "y": 1246
-            },
-            "-Mol4GQcc50ref816AmL": {
-                "u": 1637206005513,
-                "x": 9147.55,
-                "y": 1246.75
-            },
             "f1": {
                 "x": 6842.336,
                 "y": 2272.832
@@ -20008,26 +19862,6 @@
                 "u": 1634403318197,
                 "x": 7444.702,
                 "y": 3372.915
-            },
-            "-MoiS6y5boITqyTjLWvR": {
-                "u": 1637161926500,
-                "x": 7427,
-                "y": 3922
-            },
-            "-MolCnDsh7S25NlUlikJ": {
-                "u": 1637208241074,
-                "x": 7427.755,
-                "y": 3922.54
-            },
-            "-MolJsPEJYKsvWMfhX9U": {
-                "u": 1637210097243,
-                "x": 8434.104,
-                "y": 4429.458
-            },
-            "-Moxy5EzXCFLdHRrvYGU": {
-                "u": 1637422229241,
-                "x": 9297,
-                "y": 3625
             },
             "h1": {
                 "u": 1626625785205,
@@ -25405,21 +25239,6 @@
                 "x": 8953,
                 "y": 2897
             },
-            "-MoiRpnxrNfHw-mNmanA": {
-                "u": 1637161852127,
-                "x": 7433,
-                "y": 3954
-            },
-            "-MolBX9o8WDesn2hufts": {
-                "u": 1637207909035,
-                "x": 7433.675,
-                "y": 3955.145
-            },
-            "-MolLneI77N0mPky4BsL": {
-                "u": 1637210602064,
-                "x": 8453.472,
-                "y": 4349.534
-            },
             "1h7": {
                 "x": 6834.202,
                 "y": 2204.438
@@ -25929,15 +25748,6 @@
             }
         },
         "sl2": {
-            "-MoZ0OpQUANIdDoL9MXc": {
-                "u": 1636986887704,
-                "x": 11139.246,
-                "y": 4730.871
-            },
-            "-MoZ1YN1tGZs2OSV2Cfy": {
-                "x": 11331.124,
-                "y": 4604.945
-            },
             "1kh": {
                 "x": 9971.447,
                 "y": 3209.518
@@ -26223,6 +26033,10 @@
                 "x": 10978.814,
                 "y": 5262.491
             },
+            "1mg": {
+                "x": 11618.881,
+                "y": 5943.481
+            },
             "1mh": {
                 "x": 9854.922,
                 "y": 5436.141
@@ -26278,11 +26092,6 @@
             }
         },
         "sl3": {
-            "-MosWTBty2vXPWVXjMUp": {
-                "u": 1637330839184,
-                "x": 12430.74,
-                "y": 8124.394
-            },
             "1mu": {
                 "u": 1626738238013,
                 "x": 7960.619,
@@ -26829,26 +26638,6 @@
                 "u": 1634402334505,
                 "x": 8496,
                 "y": 2690
-            },
-            "-Mol4lJhCojmwUskY8B2": {
-                "u": 1637206136147,
-                "x": 9069.252,
-                "y": 1266.725
-            },
-            "-MolD-qWTI_dm7YV7shC": {
-                "u": 1637208296848,
-                "x": 7406.396,
-                "y": 3908.374
-            },
-            "-MolDD_KxkejtXjFK0bP": {
-                "u": 1637208353094,
-                "x": 7393.196,
-                "y": 3891.619
-            },
-            "-MolJg2a4UTl3Isph0MK": {
-                "u": 1637210046641,
-                "x": 8413.282,
-                "y": 4402.442
             },
             "1qe": {
                 "u": 1626974196667,
@@ -27664,10 +27453,6 @@
                 "x": 8495,
                 "y": 2655
             },
-            "-MosXa4WoiQtXf_mDwy4": {
-                "x": 11618.881,
-                "y": 5943.481
-            },
             "1vn": {
                 "x": 9976.161,
                 "y": 3264.26
@@ -27685,6 +27470,11 @@
                 "u": 1626737740166,
                 "x": 11037.777,
                 "y": 4778.106
+            },
+            "1vs": {
+                "u": 1626737783133,
+                "x": 11138.965,
+                "y": 4732.131
             },
             "1vt": {
                 "u": 1626738836100,
@@ -30192,66 +29982,6 @@
                 "x": 8531.54,
                 "y": 1940.234
             },
-            "-MoiL0Hv5ep3kN0A0LDO": {
-                "u": 1637160064200,
-                "x": 9114,
-                "y": 1234
-            },
-            "-MoiLsNzsqR3dyrazMdq": {
-                "u": 1637160289858,
-                "x": 9112,
-                "y": 1264
-            },
-            "-MoiQDsvXCss4QCz50u-": {
-                "u": 1637161430569,
-                "x": 7393,
-                "y": 3891
-            },
-            "-MoiQmFytvvrAUnVWlFk": {
-                "u": 1637161575464,
-                "x": 7406,
-                "y": 3908
-            },
-            "-MoiRNbV9JJG8MtDMxCQ": {
-                "u": 1637161732576,
-                "x": 7416,
-                "y": 3989
-            },
-            "-MoiSHUmoap2aTPUIxRZ": {
-                "u": 1637161969618,
-                "x": 9069,
-                "y": 1266
-            },
-            "-Mol56_Q78YfY4gCkm2o": {
-                "u": 1637206227320,
-                "x": 9112.596,
-                "y": 1276.757
-            },
-            "-Mol5H1YYpizdtzmI_hP": {
-                "u": 1637206270143,
-                "x": 9112.457,
-                "y": 1264.115
-            },
-            "-MolDq3scZTbVDIJM8ZS": {
-                "u": 1637208514850,
-                "x": 7365.343,
-                "y": 3978.047
-            },
-            "-MolE7N5L9rA1Ch-cfiP": {
-                "u": 1637208589805,
-                "x": 7416.739,
-                "y": 3989.395
-            },
-            "-MolM8sDz8feFiD0TUjE": {
-                "u": 1637210693066,
-                "x": 8466.993,
-                "y": 4387.65
-            },
-            "-MoncjY2E1v6oG5WFXnM": {
-                "u": 1637248858303,
-                "x": 9114.73,
-                "y": 1234
-            },
             "2cp": {
                 "u": 1626848511294,
                 "x": 9603.748,
@@ -31279,6 +31009,10 @@
                 "u": 1626738196146,
                 "x": 7280.118,
                 "y": 2014.765
+            },
+            "2j6": {
+                "x": 11331.124,
+                "y": 4604.945
             },
             "2j7": {
                 "x": 7744.504,
@@ -36683,6 +36417,16 @@
                 "x": 9271.854,
                 "y": 2256.12
             },
+            "39x": {
+                "body": "06_Windsward_Body_15_07",
+                "chapter": "06_Windsward_Chapter_15",
+                "pageNumber": 7,
+                "title": "06_Windsward_Title_15_07",
+                "topic": "Topic_06_Windsward",
+                "u": 1626740247035,
+                "x": 8888.498,
+                "y": 3384.129
+            },
             "39y": {
                 "body": "06_Windsward_Body_15_06",
                 "chapter": "06_Windsward_Chapter_15",
@@ -37698,60 +37442,6 @@
                 "y": 1966.4951171875
             }
         },
-        "09_FirstLight_Chapter_16": {
-            "-Mowi21u8NTQlNth2LDU": {
-                "body": "09_FirstLight_Body_16_02",
-                "chapter": "09_FirstLight_Chapter_16",
-                "pageNumber": 2,
-                "title": "09_FirstLight_Title_16_02",
-                "topic": "Topic_09_FirstLight",
-                "u": 1637401243902,
-                "x": 8846.6953125,
-                "y": 1916.199951171875
-            },
-            "-MowiH6BG3b9lwycsICT": {
-                "body": "09_FirstLight_Body_16_01",
-                "chapter": "09_FirstLight_Chapter_16",
-                "pageNumber": 1,
-                "title": "09_FirstLight_Title_16_01",
-                "topic": "Topic_09_FirstLight",
-                "u": 1637401305615,
-                "x": 8486.2001953125,
-                "y": 1898.699951171875
-            }
-        },
-        "09_FirstLight_Chapter_17": {
-            "-Mowi_0Sdc_50XOjtMzw": {
-                "body": "09_FirstLight_Body_17_01",
-                "chapter": "09_FirstLight_Chapter_17",
-                "pageNumber": 1,
-                "title": "09_FirstLight_Title_17_01",
-                "topic": "Topic_09_FirstLight",
-                "u": 1637401383071,
-                "x": 8367.5263671875,
-                "y": 1052.375732421875
-            },
-            "-Mowigl5cc9dGW7_t7qC": {
-                "body": "09_FirstLight_Body_17_02",
-                "chapter": "09_FirstLight_Chapter_17",
-                "pageNumber": 2,
-                "title": "09_FirstLight_Title_17_02",
-                "topic": "Topic_09_FirstLight",
-                "u": 1637401414791,
-                "x": 8366.48046875,
-                "y": 1001.6312255859375
-            },
-            "-MowimtrB8-NtKtyCn2v": {
-                "body": "09_FirstLight_Body_17_03",
-                "chapter": "09_FirstLight_Chapter_17",
-                "pageNumber": 3,
-                "title": "09_FirstLight_Title_17_03",
-                "topic": "Topic_09_FirstLight",
-                "u": 1637401439930,
-                "x": 8326.873046875,
-                "y": 985.4644775390625
-            }
-        },
         "10_CutlassKeys_Chapter_02": {
             "3co": {
                 "body": "10_CutlassKeys_Body_02_01",
@@ -38093,18 +37783,6 @@
                 "topic": "Topic_11_Mourningdale",
                 "x": 13461.147,
                 "y": 7490.013
-            }
-        },
-        "11_Mourningdale_Chapter_10": {
-            "-Mowl3IZgrhtyPN_5Dkc": {
-                "body": "11_Mourningdale_Body_10_01",
-                "chapter": "11_Mourningdale_Chapter_10",
-                "pageNumber": 1,
-                "title": "11_Mourningdale_Title_10_01",
-                "topic": "Topic_11_Mourningdale",
-                "u": 1637402035484,
-                "x": 13015.567,
-                "y": 7317.002
             }
         },
         "12_MonarchsBluffs_Chapter_03": {
@@ -39107,48 +38785,6 @@
                 "u": 1624270529418,
                 "x": 12641.26,
                 "y": 4208.125
-            }
-        },
-        "15_RestlessShore_Chapter_09": {
-            "-MowfE8KiCSR_uRVF6Qf": {
-                "body": "15_RestlessShore_Body_09_01",
-                "chapter": "15_RestlessShore_Chapter_09",
-                "pageNumber": 1,
-                "title": "15_RestlessShore_Title_09_01",
-                "topic": "Topic_15_RestlessShore",
-                "u": 1637400507043,
-                "x": 12899.4697265625,
-                "y": 5975.5615234375
-            },
-            "-MowgEBycIa8bpEvvvJ3": {
-                "body": "15_RestlessShore_Body_09_02",
-                "chapter": "15_RestlessShore_Chapter_09",
-                "pageNumber": 2,
-                "title": "15_RestlessShore_Title_09_02",
-                "topic": "Topic_15_RestlessShore",
-                "u": 1637400769417,
-                "x": 12910.85546875,
-                "y": 5984.02001953125
-            },
-            "-MowgfMQHdIt6Ci4BGk2": {
-                "body": "15_RestlessShore_Body_09_04",
-                "chapter": "15_RestlessShore_Chapter_09",
-                "pageNumber": 4,
-                "title": "15_RestlessShore_Title_09_04",
-                "topic": "Topic_15_RestlessShore",
-                "u": 1637400884773,
-                "x": 12344.349609375,
-                "y": 5873.7998046875
-            },
-            "-MowgpDVCdXBE2udCRxh": {
-                "body": "15_RestlessShore_Body_09_03",
-                "chapter": "15_RestlessShore_Chapter_09",
-                "pageNumber": 3,
-                "title": "15_RestlessShore_Title_09_03",
-                "topic": "Topic_15_RestlessShore",
-                "u": 1637400925161,
-                "x": 12894.5,
-                "y": 5999.74267578125
             }
         },
         "99_MSQ_Aeternum_Chapter_03": {
@@ -40704,112 +40340,6 @@
                 "x": 9504.167,
                 "y": 7535.495
             }
-        },
-        "VarangianKnights_Chapter_03": {
-            "-MonXmsLJGS3w8wsNLxX": {
-                "body": "VarangianKnights_Body_03_02",
-                "chapter": "VarangianKnights_Chapter_03",
-                "pageNumber": 2,
-                "title": "VarangianKnights_Title_03_02",
-                "topic": "Topic_VarangianKnights",
-                "u": 1637247299125,
-                "x": 7433.358,
-                "y": 3960.051
-            },
-            "-MonY6cm8oaP3DlmK-c2": {
-                "body": "VarangianKnights_Body_03_03",
-                "chapter": "VarangianKnights_Chapter_03",
-                "pageNumber": 3,
-                "title": "VarangianKnights_Title_03_03",
-                "topic": "Topic_VarangianKnights",
-                "u": 1637247384147,
-                "x": 7429.753,
-                "y": 4011.55
-            }
-        },
-        "VarangianKnights_Chapter_04": {
-            "-MonYmO-8cgOIxWWy4CH": {
-                "body": "VarangianKnights_Body_01_01",
-                "chapter": "VarangianKnights_Chapter_04",
-                "pageNumber": 1,
-                "title": "VarangianKnights_Title_01_01",
-                "topic": "Topic_VarangianKnights",
-                "u": 1637247559257,
-                "x": 8449.93,
-                "y": 4354.9
-            },
-            "-MonZH5ixc72gTG2-JSu": {
-                "body": "VarangianKnights_Body_04_02",
-                "chapter": "VarangianKnights_Chapter_04",
-                "pageNumber": 2,
-                "title": "VarangianKnights_Title_04_02",
-                "topic": "Topic_VarangianKnights",
-                "u": 1637247689158,
-                "x": 8438.064,
-                "y": 4419.439
-            },
-            "-MonaZDKaIz1tuW4hKMu": {
-                "body": "VarangianKnights_Body_04_01",
-                "chapter": "VarangianKnights_Chapter_04",
-                "pageNumber": 1,
-                "title": "VarangianKnights_Title_04_01",
-                "topic": "Topic_VarangianKnights",
-                "u": 1637248287648,
-                "x": 8433.03,
-                "y": 4346.346
-            },
-            "-MosVUNfmypgG0Gp97tC": {
-                "body": "VarangianKnights_Body_04_03",
-                "chapter": "VarangianKnights_Chapter_04",
-                "pageNumber": 3,
-                "title": "VarangianKnights_Title_04_03",
-                "topic": "Topic_VarangianKnights",
-                "u": 1637330585540,
-                "x": 8386,
-                "y": 4413
-            }
-        },
-        "VarangianKnights_Chapter_05": {
-            "-MonXV8XtW4DHdnBSxkT": {
-                "body": "VarangianKnights_Body_03_01",
-                "chapter": "VarangianKnights_Chapter_05",
-                "pageNumber": 1,
-                "title": "VarangianKnights_Title_03_01",
-                "topic": "Topic_VarangianKnights",
-                "u": 1637247222405,
-                "x": 7426.561,
-                "y": 3933.963
-            },
-            "-MonbtCBaEYnNZlXIqFu": {
-                "body": "VarangianKnights_Body_05_01",
-                "chapter": "VarangianKnights_Chapter_05",
-                "pageNumber": 1,
-                "title": "VarangianKnights_Title_05_01",
-                "topic": "Topic_VarangianKnights",
-                "u": 1637248635726,
-                "x": 9116.701,
-                "y": 1259.914
-            },
-            "-MoncUeuJvRKHd23fFfb": {
-                "body": "VarangianKnights_Body_05_02",
-                "chapter": "VarangianKnights_Chapter_05",
-                "pageNumber": 2,
-                "title": "VarangianKnights_Title_05_02",
-                "topic": "Topic_VarangianKnights",
-                "u": 1637248793275,
-                "x": 9076.385,
-                "y": 1260.376
-            },
-            "-MoncigEct6a1KVxnudE": {
-                "body": "99_MSQ_Body_02_01",
-                "chapter": "VarangianKnights_Chapter_05",
-                "pageNumber": 1,
-                "title": "99_MSQ_Title_02_01",
-                "topic": "Topic_VarangianKnights",
-                "u": 1637248854794,
-                "x": 9112.335,
-                "y": 1230.413
-            }
         }
     },
     "essences": {
@@ -41153,6 +40683,11 @@
                 "u": 1622443579359,
                 "x": 8976.64,
                 "y": 6511.674
+            },
+            "3mu": {
+                "u": 1622555244811,
+                "x": 10111.047,
+                "y": 6359.051
             },
             "3mv": {
                 "u": 1622555274320,
@@ -41790,6 +41325,11 @@
                 "u": 1627309956090,
                 "x": 12547.684,
                 "y": 5853.252
+            },
+            "-MnRnra4pw9JgBU63WCW": {
+                "u": 1635792157389,
+                "x": 9449,
+                "y": 6980
             },
             "3qs": {
                 "x": 12783.233,
@@ -42671,11 +42211,6 @@
                 "x": 8069,
                 "y": 3075
             },
-            "-MocxQCXzRaa2vB32agg": {
-                "u": 1637069734706,
-                "x": 8121.664,
-                "y": 3134.008
-            },
             "3w1": {
                 "x": 9610.124,
                 "y": 1692.188
@@ -42785,6 +42320,10 @@
             "3wq": {
                 "x": 8316.903,
                 "y": 2330.9
+            },
+            "3wr": {
+                "x": 11134.428,
+                "y": 4743.231
             },
             "3ws": {
                 "x": 9322.603,
@@ -43109,6 +42648,11 @@
                 "x": 8052.668,
                 "y": 3033.782
             },
+            "3yt": {
+                "u": 1621692277358,
+                "x": 8053.08,
+                "y": 3107.066
+            },
             "3yu": {
                 "u": 1621693690182,
                 "x": 8053.607,
@@ -43124,6 +42668,11 @@
                 "x": 8056.138,
                 "y": 3191.174
             },
+            "3yx": {
+                "u": 1621692549730,
+                "x": 8056.434,
+                "y": 3054.774
+            },
             "3yy": {
                 "u": 1621692543547,
                 "x": 8060.302,
@@ -43133,6 +42682,11 @@
                 "u": 1621693073873,
                 "x": 8086.165,
                 "y": 2991.771
+            },
+            "3z0": {
+                "u": 1621692224059,
+                "x": 8104.937,
+                "y": 3142.561
             },
             "3z1": {
                 "u": 1621692224959,
@@ -44835,11 +44389,6 @@
                 "u": 1635604062644,
                 "x": 10211.5,
                 "y": 7332.1
-            },
-            "-MnkNE1k_L9paml7RFRB": {
-                "u": 1636120460392,
-                "x": 11254.777,
-                "y": 8153.173
             },
             "49r": {
                 "x": 11425.9,
@@ -52002,11 +51551,6 @@
                 "x": 11311,
                 "y": 5010
             },
-            "-Mo92Z0ALN3J6BC9tDOw": {
-                "u": 1636551246708,
-                "x": 10122,
-                "y": 4324
-            },
             "5g6": {
                 "u": 1626974965384,
                 "x": 8658.317,
@@ -54328,11 +53872,6 @@
                 "x": 7203.867,
                 "y": 6179.544
             },
-            "-MnzoGyd8WP7albBEbWg": {
-                "u": 1636379468306,
-                "x": 13656.887,
-                "y": 8285.929
-            },
             "5gt": {
                 "u": 1625486138747,
                 "x": 7910.396,
@@ -54426,11 +53965,6 @@
                 "x": 10858,
                 "y": 7347
             },
-            "-MnzoEHsqRGlC69cdP4O": {
-                "u": 1636379457234,
-                "x": 12404.496,
-                "y": 8369.4
-            },
             "5gv": {
                 "u": 1627766753578,
                 "x": 10542,
@@ -54463,11 +53997,6 @@
                 "u": 1635792443420,
                 "x": 13125,
                 "y": 5846
-            },
-            "-Mocxt4Pqgc5U_nayyeZ": {
-                "elite": false,
-                "x": 7334,
-                "y": 728
             }
         },
         "lion": {
@@ -54796,6 +54325,12 @@
                 "u": 1627312624820,
                 "x": 9475,
                 "y": 3527
+            },
+            "-Mft1_--eGnmGywArM9p": {
+                "elite": true,
+                "u": 1627675843929,
+                "x": 9363.25,
+                "y": 775.25
             },
             "-MjI0Cqzda7z9l3_NoFg": {
                 "u": 1631332916597,
@@ -55353,11 +54888,6 @@
                 "x": 12114.683,
                 "y": 4291.771
             },
-            "-MnzoeBhrHFjMMaJDKlf": {
-                "elite": false,
-                "x": 9363.25,
-                "y": 775.25
-            },
             "5gw": {
                 "u": 1626856264343,
                 "x": 9524,
@@ -55651,41 +55181,6 @@
                 "x": 8472.174,
                 "y": 7167.293
             },
-            "-MocxqTv-tElPvyAKahz": {
-                "elite": false,
-                "level": 59,
-                "name": "VC_Wolf_Alpha_Named_08QP05",
-                "x": 7146.138,
-                "y": 4236.442
-            },
-            "-MonWKRLRqbmw7k8BUp6": {
-                "level": 19,
-                "name": "VC_Evil_Knight_Greataxe_Named_12MB01",
-                "u": 1637246916410,
-                "x": 7430.334,
-                "y": 3951.05
-            },
-            "-MonYrJamhsHh3nCrtTK": {
-                "level": 18,
-                "name": "VC_Evil_Knight_Mace_Named_04NW02",
-                "u": 1637247579453,
-                "x": 8449.123,
-                "y": 4357.827
-            },
-            "-MonYt29L-qqHsoZ4PvD": {
-                "level": 8,
-                "name": "VC_Damned_1H_Swordsman_M_Named_00",
-                "u": 1637247586533,
-                "x": 8660.521,
-                "y": 4455.641
-            },
-            "-MonbwTvKMo0402WbDie": {
-                "level": 20,
-                "name": "VC_Evil_Knight_Bow_Named_09FL07",
-                "u": 1637248649151,
-                "x": 9116.349,
-                "y": 1261.166
-            },
             "5h7": {
                 "name": "VC_Damned_Cultist_Named_01",
                 "u": 1630802890152,
@@ -55920,6 +55415,13 @@
                 "x": 7017.183,
                 "y": 4264.342
             },
+            "5i8": {
+                "elite": true,
+                "level": 59,
+                "name": "VC_Wolf_Alpha_Named_08QP05",
+                "x": 7146.138,
+                "y": 4236.442
+            },
             "5i9": {
                 "elite": true,
                 "level": 60,
@@ -55950,6 +55452,13 @@
                 "u": 1621233181338,
                 "x": 8261.901,
                 "y": 3819.83
+            },
+            "5id": {
+                "level": 8,
+                "name": "VC_Damned_1H_Swordsman_M_Named_00",
+                "u": 1621235727094,
+                "x": 8660.521,
+                "y": 4455.641
             },
             "5ie": {
                 "elite": true,
@@ -58704,31 +58213,6 @@
                 "x": 13301,
                 "y": 6987
             },
-            "-MoYxK9VWlfVwkazRXvx": {
-                "u": 1636985822009,
-                "x": 11152,
-                "y": 3154
-            },
-            "-MoYxcnFtKOnH8DonI0W": {
-                "u": 1636985901214,
-                "x": 9817.763,
-                "y": 3260.155
-            },
-            "-MoYxflLHJv8EseoGG3H": {
-                "u": 1636985912932,
-                "x": 9854.209,
-                "y": 3205.82
-            },
-            "-MoZ0Zb7WUhpTqAI1fxu": {
-                "u": 1636986932249,
-                "x": 13221.538,
-                "y": 7134.609
-            },
-            "-MosWLaGGUcXvlMvKJI8": {
-                "u": 1637330809307,
-                "x": 10802,
-                "y": 2737
-            },
             "5kr": {
                 "elite": false,
                 "u": 1621419102978,
@@ -58776,6 +58260,11 @@
                 "u": 1627372053701,
                 "x": 9260.75,
                 "y": 5257.75
+            },
+            "-MjKOqv_LSoGuON6mud7": {
+                "u": 1631372930804,
+                "x": 8299,
+                "y": 8362
             },
             "-MjKOwVtD5KQ1GJeOnWf": {
                 "u": 1631372953671,
@@ -60696,6 +60185,11 @@
                 "x": 7414,
                 "y": 366
             },
+            "5l0": {
+                "u": 1626856593302,
+                "x": 7334,
+                "y": 728
+            },
             "5l1": {
                 "u": 1626856626775,
                 "x": 7165,
@@ -61008,12 +60502,6 @@
                 "u": 1634480320502,
                 "x": 10795,
                 "y": 8958
-            },
-            "-MoZ14zOIPR_xjA37hqF": {
-                "elite": false,
-                "u": 1636987069620,
-                "x": 8294,
-                "y": 8364
             }
         }
     },
@@ -61579,13 +61067,6 @@
             }
         },
         "everfall": {
-            "-MoxyhDwiqexaQg5EeZa": {
-                "icon": "generic",
-                "name": "1101_Watcher",
-                "u": 1637422389070,
-                "x": 8459,
-                "y": 4495
-            },
             "5og": {
                 "icon": "generic",
                 "name": "0404_Overseer",
@@ -61678,13 +61159,6 @@
             }
         },
         "first_light": {
-            "-MoiMHtxBLIXUBCfQAEr": {
-                "icon": "generic",
-                "name": "0923_Fisher",
-                "u": 1637160398461,
-                "x": 8965,
-                "y": 1299
-            },
             "5ot": {
                 "icon": "syndicate",
                 "name": "0908_Alchemist",
@@ -61752,6 +61226,13 @@
                 "name": "0922_innkeep",
                 "x": 8849.6,
                 "y": 699.2
+            },
+            "5p4": {
+                "icon": "generic",
+                "name": "0923_Fisher",
+                "u": 1627051661372,
+                "x": 9106.971,
+                "y": 1268.731
             }
         },
         "great_cleave": {
@@ -64804,6 +64285,11 @@
                 "x": 13244,
                 "y": 6340
             },
+            "-MlFu-yRFG1aGcUzQk6N": {
+                "u": 1633444958723,
+                "x": 9043,
+                "y": 2000
+            },
             "-MlKwYFkfSApOcjI5Uv7": {
                 "u": 1633529511611,
                 "x": 12132.909,
@@ -65396,65 +64882,6 @@
                 "u": 1636031464802,
                 "x": 13088.911,
                 "y": 8509.964
-            },
-            "-MnpeJkCGsVaTOrO9k6-": {
-                "u": 1636209087172,
-                "x": 10659.856,
-                "y": 3533.709
-            },
-            "-MnzngFxYJd8bYisi_42": {
-                "u": 1636379314908,
-                "x": 10663,
-                "y": 3534
-            },
-            "-MoiCcGgGnjohWJ_fxCf": {
-                "u": 1637157866805,
-                "x": 10661,
-                "y": 3530
-            },
-            "-MosX6pYmmXYGZEqD-KB": {
-                "x": 9203.495,
-                "y": 2354.397
-            },
-            "-MoxxRvrv6jsGu7HqLGv": {
-                "u": 1637422063858,
-                "x": 7163.768,
-                "y": 920.049
-            },
-            "-Moxxamd6sWb1v_ZJSlf": {
-                "u": 1637422100218,
-                "x": 7180.785,
-                "y": 5458.327
-            },
-            "-Moxxpxvui3Aw9-BkifZ": {
-                "u": 1637422163671,
-                "x": 8052.289,
-                "y": 1430.427
-            },
-            "-MoxxsO-iKq075u6FGf2": {
-                "u": 1637422172605,
-                "x": 8048.649,
-                "y": 1432.687
-            },
-            "-MoxxvGd0MugujR5MzyR": {
-                "u": 1637422185797,
-                "x": 8050.117,
-                "y": 1434.918
-            },
-            "-Moxy0PxY3xX31hXnn3u": {
-                "u": 1637422209406,
-                "x": 8531,
-                "y": 4680
-            },
-            "-MoxycNbeflBhZkQvyko": {
-                "u": 1637422369845,
-                "x": 8603.652,
-                "y": 6336.522
-            },
-            "-Moxyq8iEaAV5SeC7EPD": {
-                "u": 1637422425328,
-                "x": 9668.799,
-                "y": 2830.846
             },
             "5zl": {
                 "u": 1622323024397,
@@ -70780,6 +70207,11 @@
                 "x": 7902.036,
                 "y": 6206.942
             },
+            "739": {
+                "u": 1622461928055,
+                "x": 7971.579,
+                "y": 7784.772
+            },
             "740": {
                 "x": 9519.74,
                 "y": 8522.339
@@ -70878,6 +70310,10 @@
             "6zg": {
                 "x": 7581.867,
                 "y": 5710.364
+            },
+            "6zh": {
+                "x": 7582.736,
+                "y": 5763.75
             },
             "6zi": {
                 "x": 7613.143,
@@ -73586,10 +73022,6 @@
                 "x": 11372,
                 "y": 4922
             },
-            "-MocxoEVxYL6rYe9L8A6": {
-                "x": 9043,
-                "y": 2000
-            },
             "7iv": {
                 "u": 1627150257161,
                 "x": 8418.988,
@@ -74479,6 +73911,10 @@
                 "x": 8705.651,
                 "y": 5238.208
             },
+            "-MmTO_t8Y1p-NywP9k2P": {
+                "x": 9203.495,
+                "y": 2354.397
+            },
             "-MmY8brb5vZpbl_WzXTJ": {
                 "u": 1634824781590,
                 "x": 8726,
@@ -74493,11 +73929,6 @@
                 "u": 1635179734098,
                 "x": 9890,
                 "y": 3716
-            },
-            "-MoxyIQCKzuj67MraQS3": {
-                "u": 1637422282686,
-                "x": 8708,
-                "y": 1104
             },
             "7on": {
                 "u": 1622403565278,
@@ -78858,66 +78289,6 @@
                 "x": 9373,
                 "y": 463
             },
-            "-MnpeHW7Z-zklc-BbkYG": {
-                "u": 1636209079096,
-                "x": 13332,
-                "y": 5453
-            },
-            "-MnznTlkDPIEyQYehbIw": {
-                "u": 1636379262467,
-                "x": 13958.688,
-                "y": 8330.193
-            },
-            "-MnzniTKs6pLVp9tcMNe": {
-                "u": 1636379324033,
-                "x": 6752,
-                "y": 1489
-            },
-            "-MnzntMSmNzNBkqrjNWZ": {
-                "u": 1636379367304,
-                "x": 6714,
-                "y": 472
-            },
-            "-MoZ-Y8BKBy785iPU2Tp": {
-                "u": 1636986665372,
-                "x": 7891.342,
-                "y": 4310.654
-            },
-            "-MoZ0AxFTczAriB9cet9": {
-                "u": 1636986831827,
-                "x": 13645.624,
-                "y": 6951.07
-            },
-            "-MoZ0H6gxLNSQ-eQ8jHx": {
-                "u": 1636986858118,
-                "x": 13607.855,
-                "y": 6891.452
-            },
-            "-MoZ0K0QuVG57W7AjkXj": {
-                "u": 1636986868598,
-                "x": 13541.982,
-                "y": 6888.697
-            },
-            "-MoZ0ajJ2CHRSH1NNzmr": {
-                "u": 1636986940888,
-                "x": 13612.839,
-                "y": 7369.052
-            },
-            "-MoZ17RtvG47gO8L-NIT": {
-                "u": 1636987079650,
-                "x": 8169.697,
-                "y": 4551.544
-            },
-            "-MoZ19YRkZs-pTIi0krg": {
-                "u": 1636987088063,
-                "x": 8291.211,
-                "y": 4333.861
-            },
-            "-MoZ1C2XeOanFVlnfkd4": {
-                "u": 1636987098067,
-                "x": 8216.02,
-                "y": 4340.282
-            },
             "8dx": {
                 "x": 9488.312,
                 "y": 2389.004
@@ -79523,11 +78894,6 @@
                 "u": 1635792127737,
                 "x": 11118.904,
                 "y": 3126.163
-            },
-            "-MosWh5UTivr5hL81gxH": {
-                "u": 1637330900121,
-                "x": 9453.1,
-                "y": 3020.696
             },
             "8fe": {
                 "x": 9562.4,
@@ -81660,31 +81026,6 @@
                 "x": 13406.254,
                 "y": 8510.206
             },
-            "-MocxgMmapjU-mkFDomm": {
-                "u": 1637069802819,
-                "x": 13373,
-                "y": 8482
-            },
-            "-MocxjAQ6ObadokDXOWS": {
-                "u": 1637069813194,
-                "x": 13359.636,
-                "y": 8489.554
-            },
-            "-Mot_hk68UJ4z1vvGSkw": {
-                "u": 1637348727842,
-                "x": 13332,
-                "y": 8497
-            },
-            "-Mot_q-NCOq9jVJwqJZp": {
-                "u": 1637348761648,
-                "x": 13333,
-                "y": 8486
-            },
-            "-Mot_vBfj4krSDbHZAY4": {
-                "u": 1637348782908,
-                "x": 13343,
-                "y": 8487
-            },
             "8s9": {
                 "x": 7537.321,
                 "y": 2964.933
@@ -82281,11 +81622,6 @@
                 "x": 9054.726,
                 "y": 3516.639
             },
-            "-MnzoBX5txer9GfgXDTN": {
-                "u": 1636379446141,
-                "x": 9292,
-                "y": 2938
-            },
             "8uh": {
                 "u": 1627124061654,
                 "x": 9485.935,
@@ -82825,11 +82161,6 @@
                 "x": 9822.99,
                 "y": 5642.958
             },
-            "-Mo47pt6wItdssR7VWHs": {
-                "u": 1636468747659,
-                "x": 9668.478,
-                "y": 5411.636
-            },
             "8xd": {
                 "x": 9333.134,
                 "y": 6667.558
@@ -82939,11 +82270,6 @@
                 "u": 1634479805989,
                 "x": 11160,
                 "y": 6490
-            },
-            "-MoZ0Wzfu4_6BzGsK-O8": {
-                "u": 1636986921580,
-                "x": 10748,
-                "y": 6365
             },
             "8xj": {
                 "x": 11803.999,
@@ -83332,21 +82658,6 @@
                 "x": 9659,
                 "y": 7443
             },
-            "-MoYxWYCHf74HLlH1qN6": {
-                "u": 1636985872300,
-                "x": 8934.46,
-                "y": 7615.652
-            },
-            "-MoYxlJMWiqJ52rqboHp": {
-                "u": 1636985936432,
-                "x": 9929.903,
-                "y": 7697.335
-            },
-            "-Mocxe9JwZlu9tCbhUfd": {
-                "u": 1637069793514,
-                "x": 9286.323,
-                "y": 8265.738
-            },
             "8z3": {
                 "x": 9023.999,
                 "y": 7074
@@ -83381,11 +82692,6 @@
                 "u": 1635857064524,
                 "x": 13490,
                 "y": 7114
-            },
-            "-MnzoK73v8_4iOIHLqfl": {
-                "u": 1636379480930,
-                "x": 13058.619,
-                "y": 8566.33
             },
             "8z5": {
                 "u": 1626732970043,
@@ -85280,31 +84586,6 @@
                 "x": 10526,
                 "y": 5396
             },
-            "-MnkNJ9G7LTHgFOu7in6": {
-                "u": 1636120479194,
-                "x": 7322.207,
-                "y": 1042.813
-            },
-            "-MnznVz2TjwSe30dB2Zu": {
-                "u": 1636379270793,
-                "x": 13038.541,
-                "y": 6039.185
-            },
-            "-MnznkQdE3bi7YSnmRVw": {
-                "u": 1636379330973,
-                "x": 6754,
-                "y": 227
-            },
-            "-Mnzo3F_9uRJJx4VSjwB": {
-                "u": 1636379412096,
-                "x": 7257,
-                "y": 668
-            },
-            "-Mo92WohjzvZeIOMuM2V": {
-                "u": 1636551239907,
-                "x": 7016,
-                "y": 4186.5
-            },
             "8zg": {
                 "u": 1627309404954,
                 "x": 6621.045,
@@ -86358,11 +85639,6 @@
                 "u": 1621510554746,
                 "x": 9548.197,
                 "y": 4014.822
-            },
-            "-Moxyk6W7cSlTfwFpD5c": {
-                "u": 1637422400646,
-                "x": 10361.517,
-                "y": 4949.322
             },
             "97j": {
                 "u": 1621706307271,
@@ -90380,81 +89656,6 @@
                 "x": 9667.152,
                 "y": 223.966
             },
-            "-MnzncSe1oupkd5czrM2": {
-                "u": 1636379299803,
-                "x": 11191.815,
-                "y": 7610.331
-            },
-            "-MnznoUDWLS5KoGRifIT": {
-                "u": 1636379348058,
-                "x": 6656,
-                "y": 337
-            },
-            "-Mnznr30znTQsOIEScPk": {
-                "u": 1636379357675,
-                "x": 6677,
-                "y": 315
-            },
-            "-Mnznvs15pWDR21hCtOw": {
-                "u": 1636379377560,
-                "x": 6956,
-                "y": 575
-            },
-            "-Mnzo5tAmjkNSdFIzomF": {
-                "u": 1636379423229,
-                "x": 7378,
-                "y": 656
-            },
-            "-Mnzo9VBjZTdn_YAsiTc": {
-                "u": 1636379438048,
-                "x": 13709.33,
-                "y": 8605.696
-            },
-            "-MoYxN3PYsSWNiNnadf7": {
-                "u": 1636985832636,
-                "x": 14073.505,
-                "y": 8293.366
-            },
-            "-MoYxRsMqTRmOXqgGnp5": {
-                "u": 1636985853289,
-                "x": 13890.496,
-                "y": 8398.219
-            },
-            "-MoYxUNvRUyaW-VI2sVZ": {
-                "u": 1636985862212,
-                "x": 13799.441,
-                "y": 8452.545
-            },
-            "-MoYxiZN7KqW0B59Wd2F": {
-                "u": 1636985925532,
-                "x": 6681.142,
-                "y": 3150.335
-            },
-            "-MoZ-VNidKLTjNCb6y8m": {
-                "u": 1636986654257,
-                "x": 7892.67,
-                "y": 4301.423
-            },
-            "-MoZ0c_XYzuYzOCgHq9K": {
-                "u": 1636986948441,
-                "x": 13709.085,
-                "y": 7452.717
-            },
-            "-MocxlOTF3KJQeeOfEwD": {
-                "u": 1637069822077,
-                "x": 13410,
-                "y": 8602
-            },
-            "-MoiCZIMZBsEZ14sbjYB": {
-                "u": 1637157849486,
-                "x": 6950.732,
-                "y": 575.27
-            },
-            "-MoxymtVjcTXf-qx0G2u": {
-                "u": 1637422412065,
-                "x": 10890.423,
-                "y": 2567.705
-            },
             "9nn": {
                 "u": 1627083214618,
                 "x": 9495.215,
@@ -94376,21 +93577,6 @@
                 "u": 1635431959653,
                 "x": 11513.824,
                 "y": 6988.166
-            },
-            "-MoiCXD04zxmiIxeZHuz": {
-                "u": 1637157843278,
-                "x": 12086,
-                "y": 7013
-            },
-            "-MoxyUvpsygR_pyRfDHB": {
-                "u": 1637422334392,
-                "x": 9470.143,
-                "y": 2620.135
-            },
-            "-MoxyYDtg3dYEWWl54IM": {
-                "u": 1637422348341,
-                "x": 9248.033,
-                "y": 2478.947
             },
             "a6q": {
                 "x": 9378.299,
@@ -110430,11 +109616,6 @@
                 "x": 11973.727,
                 "y": 4247.51
             },
-            "-MoYxEj_b5ghv_IVHiio": {
-                "u": 1636985801843,
-                "x": 10692,
-                "y": 5103
-            },
             "cur": {
                 "x": 9605,
                 "y": 3317
@@ -112332,13 +111513,6 @@
             }
         },
         "everfall": {
-            "-MoxTuzRJFvJbqZuTH1h": {
-                "icon": "battlefield_fort",
-                "name": "ui_poi_keep_40283",
-                "u": 1637414056035,
-                "x": 8440,
-                "y": 4364
-            },
             "d4a": {
                 "icon": "township",
                 "name": "ui_poi_town_everfall",
@@ -112612,13 +111786,6 @@
             }
         },
         "first_light": {
-            "-MoxyLvxpTi0MZc6gJaO": {
-                "icon": "wolf_den",
-                "name": "ui_poi_wolf_den_40023",
-                "u": 1637422297637,
-                "x": 8712,
-                "y": 1106
-            },
             "d5d": {
                 "icon": "abandoned_fishing_village",
                 "name": "ui_poi_abandoned_fishing_village_40024",
@@ -112972,7 +112139,7 @@
             "d6s": {
                 "icon": "ancient_temple_sm_elite",
                 "name": "ui_poi_corrupted_ritual_40343",
-                "u": 1637413585990,
+                "u": 1624193979878,
                 "x": 8404.25,
                 "y": 8194.2
             },
@@ -113764,6 +112931,13 @@
             }
         },
         "restless_shore": {
+            "-Mfav_SGa9u96bAtB-ll": {
+                "icon": "_tmp_icon",
+                "name": "ui_poi_spiritshrine_01_60239",
+                "u": 1627372021164,
+                "x": 12948.389,
+                "y": 5552
+            },
             "d9x": {
                 "icon": "township",
                 "name": "ui_poi_town_restless_shore",

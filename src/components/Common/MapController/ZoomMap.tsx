@@ -1,8 +1,14 @@
-import React, { useState } from 'react';
+import { DesktopAppContext } from '@/contexts/DesktopAppContext';
+import React, { useContext, useEffect, useState } from 'react';
 import { RangeWithController } from '..';
 
 export const ZoomMap = () => {
-    const [rangeValue, setRangeValue] = useState<number>(4)
+    const { mapController, setMapController } = useContext(DesktopAppContext)
+    const [rangeValue, setRangeValue] = useState<number>(mapController?.zoom);
+
+    useEffect(() => {
+        setMapController({ ...mapController, zoom: rangeValue });
+    }, [rangeValue])
     return (
         <div className="mt-2">
             <h4 className="text-lg text-center text-yellow1">Zoom Map</h4>

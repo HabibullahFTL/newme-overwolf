@@ -1,8 +1,14 @@
-import React, { useState } from 'react';
+import { DesktopAppContext } from '@/contexts/DesktopAppContext';
+import React, { useContext, useEffect, useState } from 'react';
 import { RangeWithController } from '..';
 
 export const MapOpacity = () => {
-    const [rangeValue, setRangeValue] = useState<number>(100)
+    const { mapController, setMapController } = useContext(DesktopAppContext)
+    const [rangeValue, setRangeValue] = useState<number>(mapController?.opacity);
+
+    useEffect(() => {
+        setMapController({ ...mapController, opacity: rangeValue });
+    }, [rangeValue])
     return (
         <div className="">
             <h4 className="text-lg text-center text-yellow1">Map Opacity</h4>
@@ -11,7 +17,7 @@ export const MapOpacity = () => {
                 setRangeValue={setRangeValue}
                 minValue={0}
                 maxValue={100}
-                perClickValue={2}
+                perClickValue={5}
                 isZeroAccepted={false} />
         </div>
     );

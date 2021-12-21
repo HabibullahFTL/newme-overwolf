@@ -1,6 +1,6 @@
 import React from "react";
 import { FilterButton } from "./FilterButton";
-import { MenuItem } from "./MenuItem";
+import { Menu } from "./Menu";
 import { SearchBox } from "./SearchBox";
 
 export const NavBar = () => {
@@ -17,17 +17,7 @@ export const NavBar = () => {
             </div>
 
             {/* For Menu  */}
-            <div className="col-span-5">
-                <ul className="flex text-gray1 text-xl w-80 ml-10 text-center">
-                    <MenuItem
-                        to={"/"}
-                        text="Map" />
-
-                    <MenuItem
-                        to={"/journal"}
-                        text="Personal Journal" />
-                </ul>
-            </div>
+            <Menu />
 
             {/* Search box */}
             <SearchBox />

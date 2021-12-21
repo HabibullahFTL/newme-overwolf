@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import { DesktopAppContext } from '@/contexts/DesktopAppContext';
+import React, { useContext, useState } from 'react';
 import { MapContainer, Marker, Popup, TileLayer, useMapEvents } from 'react-leaflet';
 import markerJson from './markers.json';
 
 export const Map = () => {
     const [position, setPosition] = React.useState<any | null>(null)
-    // const xAdd: number = 8202.36,
-    //     xDiv: number = 45.4823,
-    //     yAdd: number = 7615.27,
-    //     yDiv: number = 90.7449;
+    const { mapController } = useContext(DesktopAppContext)
+
     const xAdd: number = 8188,
         xDiv: number = 45.66,
         yAdd: number = -78.8,
@@ -16,10 +15,6 @@ export const Map = () => {
         yP: number = 8.16 / 10000000,
         yQ: number = 2.67 / 10000000000,
         yR: number = -2.39 / 100000000000000;
-    // const xAdd: number = 0,
-    //     xDiv: number = 1,
-    //     yAdd: number = 0,
-    //     yDiv: number = 1;
 
     const pos: object = (markerJson.pois);
     Object.entries(pos).map(([key, landmark]) => {
@@ -88,13 +83,10 @@ export const Map = () => {
         }
     ]
 
-    console.log("P", position);
-
     function LocationMarker() {
         const [position, setPos] = useState({ lat: 0, lng: 0 })
         useMapEvents({
             click(e) {
-                console.log(e.latlng);
                 setPos(e.latlng)
             },
         })
@@ -106,8 +98,8 @@ export const Map = () => {
         )
     }
     return (
-        <div className="leaflet-container">
-            <MapContainer center={{ lat: 0, lng: 0 }} zoom={0} scrollWheelZoom={true} >
+        <div className="leaflet-container" style={{ opacity: (mapController?.opacity / 100) }}>
+            <MapContainer center={{ lat: 0, lng: 0 }} zoom={mapController?.zoom} zoomControl={false} scrollWheelZoom={true} >
                 <TileLayer
                     attribution='&copy; <a href="http://algosolver.com">Algosolver</a> contributors'
                     // url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -119,11 +111,7 @@ export const Map = () => {
 
                 <LocationMarker />
                 {data && data?.map((pos, index) => {
-                    // let tmp = { lat: (pos.x - xAdd) / xDiv, lng: (pos.y - yAdd) / yDiv }
-                    // let tmp = { lat: (pos.y - yAdd) / yDiv, lng: (pos.x - xAdd) / xDiv }
                     let tmp = { lat: (yAdd + yM * pos.y + yP * (pos.y ** 2) + yQ * (pos.y ** 3) + yR * (pos.y ** 4)), lng: (pos.x - xAdd) / xDiv }
-
-                    console.log(data?.map((pos) => ({ pos, tmp })));
 
                     return (
                         <Marker position={tmp} draggable={true} ref={(r) => { r?.openPopup() }} key={index}>
@@ -134,15 +122,6 @@ export const Map = () => {
                     );
                 })
                 }
-
-                {/* { currentPos && 
-                    <Marker position={currentPos} draggable={false} ref={(r) => {r?.openPopup()}}>
-                        <Popup position={currentPos}>
-                            Current location: <pre>{JSON.stringify(currentPos, null, 2)}</pre>
-                        </Popup>
-                    </Marker>
-                } */}
-
             </MapContainer>
         </div>
     );

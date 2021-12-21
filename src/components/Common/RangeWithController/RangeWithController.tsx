@@ -69,7 +69,7 @@ export const RangeWithController = ({ rangeValue, setRangeValue, minValue = 0, m
     return (
         <div className="relative w-full h-10 flex items-center justify-between">
             <button
-                className="w-8 outline-none"
+                className="w-8 outline-none active:scale-90 transform transition duration-150"
                 title="Decrease"
                 onClick={() => setRangeValue((prevValue: number) => prevValue > perClickValue ? (prevValue - perClickValue) <= 0 ? 0 : ((prevValue - perClickValue)) : prevValue)}>
                 <img src="/assets/images/left-arrow.svg" alt="Left arrow" />
@@ -93,7 +93,7 @@ export const RangeWithController = ({ rangeValue, setRangeValue, minValue = 0, m
                     max={maxValue} />
             </div>
             <button
-                className="w-8 outline-none"
+                className="w-8 outline-none active:scale-90 transform transition duration-150"
                 title="Increase"
                 onClick={() => setRangeValue((prevValue: number) => prevValue < maxValue ? ((prevValue + perClickValue) <= maxValue ? prevValue + perClickValue : maxValue) : prevValue)}>
                 <img src="/assets/images/right-arrow.svg" alt="Left arrow" />

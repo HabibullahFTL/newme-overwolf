@@ -1,7 +1,8 @@
-import { JournalScreen } from "./Journal/journalScreen";
-import { MapScreen } from "./Map/mapScreen";
+import { JournalScreen } from "./JournalScreen/journalScreen";
+import { MapScreen } from "./MapScreen/mapScreen";
 
 export {
     JournalScreen,
     MapScreen
 };
+

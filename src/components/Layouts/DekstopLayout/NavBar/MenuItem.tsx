@@ -1,31 +1,31 @@
-import React, { useEffect, useState } from 'react';
-// import { Link, useLocation } from 'react-router-dom';
-// import classes from './Menu.module.css';
+import { DesktopAppContext } from "@/contexts/DesktopAppContext";
+import React, { useContext, useEffect, useState } from 'react';
 
 type Props = {
-    to: string,
     text: string,
+    screen: string,
 };
 
-export const MenuItem = ({ to, text }: Props) => {
+export const MenuItem = ({ text, screen }: Props) => {
     const [isActive, setIsActive] = useState<Boolean>(false)
 
-    // const location = useLocation()
+    const { menuData, setMenuData } = useContext(DesktopAppContext);
+
     useEffect(() => {
-        if (to === "/") {
+        if (screen === menuData?.active) {
             setIsActive(true)
         } else {
             setIsActive(false)
         }
-    }, [to])
+    }, [screen, menuData])
 
 
     return (
         <li>
-            <a
+            <button
+                onClick={() => setMenuData({ ...menuData, active: screen })}
                 className={`block px-6 py-3 ${isActive ? "text-yellow-300 border-b-[3px] border-yellow-300" : "border-b-[3px] border-dark2"}`}
-                href={to}
-            >{text}</a>
+            >{text}</button>
         </li>
     );
 };

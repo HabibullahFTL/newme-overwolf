@@ -1,17 +1,31 @@
-import React from "react";
+import { ButtonDataType, DesktopAppContext } from "@/contexts/DesktopAppContext";
+import React, { useContext } from "react";
 import { Button } from "..";
+import { ButtonFilterItem } from "./ButtonFilterItem";
+
+
 
 export const FilterBox = () => {
+    const { filterData, setFilterData } = useContext(DesktopAppContext)
     return (
-        <div className="w-[708px] h-[240px] fixed left-[280px] bottom-0 z-[1005] rounded-t-xl p-5 bg-dark1 font-imfell">
+        <div className={`transition-all duration-200 fixed bottom-0 left-[220px] ${filterData?.active ? "h-[200px] w-[778px] z-[1005] rounded-t-xl p-4 bg-dark1 font-imfell" : "h-0 overflow-hidden"}`}>
             <h2 className="text-yellow-300 text-xl  text-center">Filters</h2>
-            <div className="h-[110px] mx-10 my-4 overflow-x-hidden overflow-y-auto scrollbar">
-                Lorem ipsum tun tun 1 1 1 1 1 1 1 1 1 1 1 1  1 1 1 1 1  1 1  1 1 1 1 1 1  1 1tun 1 1 1 1 1 1 1 1 1 1 1 1  1 1 1 1 1  1 1  1 1 1 1 1 1  1 1 tun 1 1 1 1 1 1 1 1 1 1 1 1  1 1 1 1 1  1 1  1 1 1 1 1 1  1 1  11  1Lorem ipsum tun tun  Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun
-                Lorem ipsum tun tun Lorem ipsum tun tun  Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun
-                Lorem ipsum tun tun Lorem ipsum tun tun  Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun Lorem ipsum tun tun
+            <div className="relative">
+                <div className="h-[75px] mx-8 my-[10px] overflow-x-hidden overflow-y-auto scrollbar">
+                    <div className="grid grid-cols-6 gap-2 h-full w-[663px] mr-3">
+                        {
+                            filterData?.filterBtnData?.map((data: ButtonDataType) => <ButtonFilterItem
+                                key={data.id}
+                                buttonData={data}
+                                filterData={filterData}
+                                setFilterData={setFilterData}
+                                isActive={false} />)
+                        }
+                    </div>
+                </div>
             </div>
             <div className="flex justify-center">
-                <Button><span className="block text-sm py-1 px-8 font-arial font-bold">SEARCH</span></Button>
+                <Button customFunc={() => { }}><span className="block text-sm px-5 font-arial font-bold">SEARCH</span></Button>
             </div>
         </div>
     );

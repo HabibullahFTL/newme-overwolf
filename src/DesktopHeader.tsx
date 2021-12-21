@@ -85,7 +85,6 @@ const useStyles = makeStyles()(theme => ({
 const backgroundController = getBackgroundController();
 export default function DesktopHeader() {
     const context = useContext(AppContext);
-    console.log(context);
 
     const { classes } = useStyles();
     const { t } = useTranslation();
