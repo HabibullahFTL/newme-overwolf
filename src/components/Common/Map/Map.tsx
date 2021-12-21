@@ -99,13 +99,13 @@ export const Map = () => {
     }
     return (
         <div className="leaflet-container" style={{ opacity: (mapController?.opacity / 100) }}>
-            <MapContainer center={{ lat: 0, lng: 0 }} zoom={mapController?.zoom} zoomControl={false} scrollWheelZoom={true} >
+            <MapContainer center={{ lat: 0, lng: 0 }} zoom={2} zoomControl={false} scrollWheelZoom={true} >
                 <TileLayer
                     attribution='&copy; <a href="http://algosolver.com">Algosolver</a> contributors'
                     // url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     url="map/{z}/{x}/{y}.jpg"
                     minZoom={2}
-                    maxZoom={8}
+                    maxZoom={6}
                     noWrap={true}
                 />
 

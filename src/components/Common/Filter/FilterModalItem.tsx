@@ -24,7 +24,7 @@ export const FilterModalItem = ({ id, title, img, checked, setModalData }: Props
         <div
             className="grid grid-cols-12">
             <label
-                className="col-span-10 text-white flex items-center">
+                className="col-span-10 text-white flex items-center cursor-pointer">
                 <div className="relative inline-block w-[18px] h-[18px] mr-2 bg-dark5">
                     <input
                         checked={checked}

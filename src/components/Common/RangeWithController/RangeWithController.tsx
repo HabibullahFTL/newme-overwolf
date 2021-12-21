@@ -74,10 +74,10 @@ export const RangeWithController = ({ rangeValue, setRangeValue, minValue = 0, m
                 onClick={() => setRangeValue((prevValue: number) => prevValue > perClickValue ? (prevValue - perClickValue) <= 0 ? 0 : ((prevValue - perClickValue)) : prevValue)}>
                 <img src="/assets/images/left-arrow.svg" alt="Left arrow" />
             </button>
-            <div className="relative w-32">
+            <div className="relative w-32 cursor-pointer">
                 <label
                     onClick={(e) => e.preventDefault()}
-                    className="absolute -top-2.5 flex justify-items-center items-center w-7 h-7 text-yellow2 rounded-full bg-gradient-dark font-arial text-xxs font-bold -z-10 border border-dark5"
+                    className="absolute -top-2.5 flex justify-items-center items-center w-7 h-7 text-yellow2 rounded-full bg-gradient-dark font-arial text-xxs font-bold -z-10 border border-dark5 cursor-pointer"
                     style={{ left: lefPosition + "px" }}>
                     <div className="w-full text-center">{rangeValue}</div>
                 </label>
