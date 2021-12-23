@@ -13,6 +13,7 @@ import { windowNames } from './OverwolfWindows/consts';
 import { desktopAppTitle } from './OverwolfWindows/desktop/desktop';
 import { makeStyles } from './theme';
 
+
 const useStyles = makeStyles()(theme => ({
     root: {
         display: 'flex',

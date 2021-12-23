@@ -20,6 +20,7 @@ export const FilterModalItem = ({ id, title, img, checked, setModalData }: Props
     const handleCheckbox = () => {
         setModalData(prevValue => (prevValue?.map((item) => item?.id === id ? ({ ...item, checked: !item?.checked }) : item)))
     }
+    const calculatedTitle = title?.length > 15 ? title.slice(0, 13) + "..." : title;
     return (
         <div
             className="grid grid-cols-12">
@@ -32,7 +33,7 @@ export const FilterModalItem = ({ id, title, img, checked, setModalData }: Props
                         className="filter-checkbox absolute top-0 left-0 appearance-none w-[18px] h-[18px] outline-none border-2 border-white rounded" type="checkbox" />
                     <BiCheck className="absolute top-0 left-[1px] text-dark1" />
                 </div>
-                {title}
+                {calculatedTitle}
             </label>
             <div className="col-span-2">
                 <div className="w-7 h-7 overflow-hidden rounded-full">

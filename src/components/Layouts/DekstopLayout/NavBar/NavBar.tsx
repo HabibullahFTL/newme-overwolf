@@ -1,13 +1,11 @@
-import { DesktopAppContext } from "@/contexts/DesktopAppContext";
-import React, { useContext } from "react";
+import React from "react";
 import { FilterButton } from "./FilterButton";
 import { Menu } from "./Menu";
 import { SearchBox } from "./SearchBox";
 
 export const NavBar = () => {
-    const { mapController } = useContext(DesktopAppContext)
     return (
-        <nav className="h-14 bg-dark2 grid grid-cols-12" style={{ opacity: (mapController?.opacity / 100) }}>
+        <nav className="h-14 bg-dark2 grid grid-cols-12">
             {/* For Logo  */}
             <div className="h-full w-full flex  items-center pl-5">
                 <div className="w-10 h-10">

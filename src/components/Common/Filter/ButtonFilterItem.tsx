@@ -27,28 +27,21 @@ export const ButtonFilterItem = ({ buttonData, filterData = {} as FilterDataType
         setFilterData({ ...filterData, activeBtn: null })
     }
 
-    const checkboxesData = [
-        { id: 1, title: "Ironwood Tree", img: "/assets/images/icon2.png" },
-        { id: 2, title: "Ironwood Tree", img: "/assets/images/icon2.png" },
-        { id: 3, title: "Ironwood Tree", img: "/assets/images/icon2.png" },
-        { id: 4, title: "Ironwood Tree", img: "/assets/images/icon2.png" },
-        { id: 5, title: "Ironwood Tree", img: "/assets/images/icon2.png" },
-        { id: 6, title: "Ironwood Tree", img: "/assets/images/icon2.png" },
-        { id: 7, title: "Ironwood Tree", img: "/assets/images/icon2.png" },
-    ]
+    const keys = Object.keys(filterData?.markerData?.[buttonData?.text]);
+    const btnsData = keys.map((item, index) => ({ id: index, title: item, img: "/assets/images/icon2.png" }))
     return (
         <>
             {
                 filterData?.active && filterData?.activeBtn?.id === buttonData?.id && active &&
                 <FilterModal
                     key={filterData?.activeBtn?.id}
-                    checkboxesData={checkboxesData}
+                    checkboxesData={btnsData}
                     positions={postions}
                     handleClose={handleClose} />
             }
             <button
                 onClick={(e: any) => handleClick(e)}
-                className={`filter-button active:scale-95 transform transition duration-150 ${active && filterData?.activeBtn?.id === buttonData?.id && "active"}`}>
+                className={`filter-button capitalize active:scale-95 transform transition duration-150 ${active && filterData?.activeBtn?.id === buttonData?.id && "active"}`}>
                 {buttonData?.text}
             </button>
         </>

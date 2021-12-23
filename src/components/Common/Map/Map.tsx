@@ -5,7 +5,7 @@ import markerJson from './markers.json';
 
 export const Map = () => {
     const [position, setPosition] = React.useState<any | null>(null)
-    const { mapController } = useContext(DesktopAppContext)
+    const { setFilterData } = useContext(DesktopAppContext)
 
     const xAdd: number = 8188,
         xDiv: number = 45.66,
@@ -98,7 +98,7 @@ export const Map = () => {
         )
     }
     return (
-        <div className="leaflet-container" style={{ opacity: (mapController?.opacity / 100) }}>
+        <div className="leaflet-container">
             <MapContainer center={{ lat: 0, lng: 0 }} zoom={2} zoomControl={false} scrollWheelZoom={true} >
                 <TileLayer
                     attribution='&copy; <a href="http://algosolver.com">Algosolver</a> contributors'

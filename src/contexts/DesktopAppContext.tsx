@@ -11,8 +11,15 @@ export interface ButtonDataType {
     id: number,
     text: string
 }
+export interface DataModel {
+    [name: string]: object
+}
+export interface MarkerDataType {
+    [name: string]: DataModel,
+}
 
 export interface FilterDataType {
+    markerData: MarkerDataType,
     filterBtnData: ButtonDataType[],
     activeBtn: null | ButtonDataType,
     active: boolean

@@ -1,30 +1,21 @@
 import React, { useState } from 'react';
+import markerJson from './components/Common/Map/markers.json';
 import { DesktopLayout } from './components/Layouts/DekstopLayout/DesktopLayout';
-import { DesktopAppContext, FilterDataType, MenuDataType } from './contexts/DesktopAppContext';
+import { DesktopAppContext, FilterDataType, MarkerDataType, MenuDataType } from './contexts/DesktopAppContext';
 import DesktopHeader from './DesktopHeader';
 import { JournalScreen, MapScreen } from './screens/DesktopScrens';
 
-const customFilterData = {
-    filterBtnData: [
-        { id: 1, text: "Cities" },
-        { id: 2, text: "NPC's" },
-        { id: 3, text: "Zones" },
-        { id: 4, text: "Location" },
-        { id: 5, text: "Plants" },
-        { id: 6, text: "Wood" },
-        { id: 7, text: "Fishing" },
-        { id: 8, text: "Chests" },
-        { id: 9, text: "Documents" },
-        { id: 10, text: "Ores" },
-        { id: 11, text: "Essences" },
-        { id: 12, text: "Monsters" },
-    ],
-    activeBtn: null,
-    active: false
-}
-
-
 export default function Desktop() {
+    const keys = Object.keys(markerJson);
+    const btnsData = keys.map((item, index) => ({ id: index, text: item }))
+
+    const customFilterData = {
+        markerData: markerJson as MarkerDataType,
+        filterBtnData: btnsData,
+        activeBtn: null,
+        active: false
+    }
+    // States 
     const [menuData, setMenuData] = useState({
         menu: ["mapScreen", "journalScreen"],
         active: "mapScreen",
@@ -34,7 +25,7 @@ export default function Desktop() {
 
     return (
         <DesktopAppContext.Provider value={{ menuData, setMenuData, filterData, setFilterData, mapController, setMapController }}>
-            <div className="overflow-hidden h-screen">
+            <div className="overflow-hidden h-screen" style={{ opacity: (mapController?.opacity / 100) }}>
                 <DesktopHeader />
                 <div style={{ height: "calc(100vh - 32px)" }} className="overflow-hidden">
                     <DesktopLayout>

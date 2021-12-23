@@ -2,7 +2,7 @@ import React from "react";
 import { NavBar } from "./NavBar/NavBar";
 
 type Props = {
-    children: Object | string | string[] | JSX.Element | JSX.Element[],
+    children: Object | string | string[] | JSX.Element | JSX.Element[]
 };
 
 export const DesktopLayout = ({ children }: Props) => {
