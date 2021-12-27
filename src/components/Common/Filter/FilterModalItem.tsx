@@ -20,12 +20,12 @@ export const FilterModalItem = ({ id, title, img, checked, setModalData }: Props
     const handleCheckbox = () => {
         setModalData(prevValue => (prevValue?.map((item) => item?.id === id ? ({ ...item, checked: !item?.checked }) : item)))
     }
-    const calculatedTitle = title?.length > 15 ? title.slice(0, 13) + "..." : title;
+    const calculatedTitle = title?.length > 20 ? title.slice(0, 17) + "..." : title;
     return (
         <div
             className="grid grid-cols-12">
             <label
-                className="col-span-10 text-white flex items-center cursor-pointer">
+                className="col-span-10 text-white text-sm flex items-center cursor-pointer">
                 <div className="relative inline-block w-[18px] h-[18px] mr-2 bg-dark5">
                     <input
                         checked={checked}
@@ -36,7 +36,7 @@ export const FilterModalItem = ({ id, title, img, checked, setModalData }: Props
                 {calculatedTitle}
             </label>
             <div className="col-span-2">
-                <div className="w-7 h-7 overflow-hidden rounded-full">
+                <div className="w-6 h-6 overflow-hidden rounded-full">
                     <img
                         className="w-full h-full object-cover"
                         src={img}

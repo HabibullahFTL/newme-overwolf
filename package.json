@@ -53,6 +53,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.15",
     "@types/react-leaflet": "^2.8.2",
+    "axios": "^0.24.0",
     "clsx": "^1.1.1",
     "crypto-js": "^4.1.1",
     "dexie": "^3.0.3",

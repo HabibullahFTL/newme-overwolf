@@ -21,6 +21,7 @@ export interface MarkerDataType {
 export interface FilterDataType {
     markerData: MarkerDataType,
     filterBtnData: ButtonDataType[],
+    currentMarkers: any,
     activeBtn: null | ButtonDataType,
     active: boolean
 }
@@ -34,6 +35,17 @@ export interface MapController {
 
 export type SetMapController = React.Dispatch<React.SetStateAction<MapController>>;
 
+export interface UserDataType {
+    isLoggedIn: boolean,
+    token: string,
+    battleTag: string,
+    battleId: string,
+    region: string,
+    userInfo: object,
+}
+
+export type SetUserDataType = React.Dispatch<React.SetStateAction<UserDataType>>;
+
 export interface DesktopAppContext {
     menuData: MenuDataType,
     setMenuData: SetMenuDataType,
@@ -41,6 +53,8 @@ export interface DesktopAppContext {
     setFilterData: SetFilterDataType,
     mapController: MapController,
     setMapController: SetMapController,
+    userData: UserDataType,
+    setUserData: SetUserDataType,
 }
 
 

@@ -27,7 +27,8 @@ export const ButtonFilterItem = ({ buttonData, filterData = {} as FilterDataType
         setFilterData({ ...filterData, activeBtn: null })
     }
 
-    const keys = Object.keys(filterData?.markerData?.[buttonData?.text]);
+    const filterSecondLvlData = filterData?.markerData?.[buttonData?.text];
+    const keys = Object.keys(filterSecondLvlData);
     const btnsData = keys.map((item, index) => ({ id: index, title: item, img: "/assets/images/icon2.png" }))
     return (
         <>
@@ -37,7 +38,8 @@ export const ButtonFilterItem = ({ buttonData, filterData = {} as FilterDataType
                     key={filterData?.activeBtn?.id}
                     checkboxesData={btnsData}
                     positions={postions}
-                    handleClose={handleClose} />
+                    handleClose={handleClose}
+                    filterSecondLvlData={filterSecondLvlData} />
             }
             <button
                 onClick={(e: any) => handleClick(e)}
