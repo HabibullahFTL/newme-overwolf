@@ -2,7 +2,7 @@ import { DesktopAppContext } from '@/contexts/DesktopAppContext';
 import L from 'leaflet';
 import React, { useContext } from 'react';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
-import markerJson from './markers.json';
+import markerJson from './markersUpdated.json';
 
 export const Map = () => {
     const [position, setPosition] = React.useState<any | null>(null)
@@ -17,7 +17,7 @@ export const Map = () => {
         yQ: number = 2.67 / 10000000000,
         yR: number = -2.39 / 100000000000000;
 
-    const pos: object = (markerJson.pois);
+    const pos: object = (markerJson.POIs);
     Object.entries(pos).map(([key, landmark]) => {
         Object.entries(landmark).map(([_, mark]) => {
             if ((mark as { icon: string }).icon === 'township') {

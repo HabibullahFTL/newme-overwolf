@@ -1,16 +1,21 @@
 import React, { useState } from 'react';
-import markerJson from './components/Common/Map/markers1.json';
+import markerJson from './components/Common/Map/markersUpdated.json';
 import { DesktopLayout } from './components/Layouts/DekstopLayout/DesktopLayout';
 import { DesktopAppContext, FilterDataType, MarkerDataType, MenuDataType, UserDataType } from './contexts/DesktopAppContext';
 import DesktopHeader from './DesktopHeader';
+import { chestsFormattedData } from './helpers/markersController';
 import { JournalScreen, MapScreen } from './screens/DesktopScrens';
 
 export default function Desktop() {
-    const keys = Object.keys(markerJson);
+    const chests = chestsFormattedData(markerJson?.chests);
+    const customMarkersData = {
+        chests
+    }
+    const keys = Object.keys(customMarkersData);
     const btnsData = keys.map((item, index) => ({ id: index, text: item }))
 
     const customFilterData = {
-        markerData: markerJson as MarkerDataType,
+        markerData: customMarkersData as MarkerDataType,
         filterBtnData: btnsData,
         currentMarkers: {},
         activeBtn: null,

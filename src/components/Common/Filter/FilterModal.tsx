@@ -33,7 +33,7 @@ export const FilterModal = ({ checkboxesData = [], positions = { top: 0, left: 0
     const { filterData, setFilterData } = useContext(DesktopAppContext)
 
     useEffect(() => {
-        setModalData(checkboxesData?.map(item => ({ ...item, checked: false })))
+        setModalData(checkboxesData?.filter(data => data?.title != "hasChild")?.map(item => ({ ...item, checked: false })))
         // const {currentMarkers} = filterData;
         // const keys = Object.keys(currentMarkers);
         // keys?.filter((item)=>{

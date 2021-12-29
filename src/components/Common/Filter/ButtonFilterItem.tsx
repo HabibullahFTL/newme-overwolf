@@ -28,15 +28,17 @@ export const ButtonFilterItem = ({ buttonData, filterData = {} as FilterDataType
     }
 
     const filterSecondLvlData = filterData?.markerData?.[buttonData?.text];
+    console.log(filterSecondLvlData);
+
     const keys = Object.keys(filterSecondLvlData);
-    const btnsData = keys.map((item, index) => ({ id: index, title: item, img: "/assets/images/icon2.png" }))
+    const chkBoxesData = keys.map((item, index) => ({ id: index, title: item, img: "/assets/images/icon2.png" }))
     return (
         <>
             {
                 filterData?.active && filterData?.activeBtn?.id === buttonData?.id && active &&
                 <FilterModal
                     key={filterData?.activeBtn?.id}
-                    checkboxesData={btnsData}
+                    checkboxesData={chkBoxesData}
                     positions={postions}
                     handleClose={handleClose}
                     filterSecondLvlData={filterSecondLvlData} />

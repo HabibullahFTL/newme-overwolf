@@ -12,7 +12,7 @@
         "openDesktop": "Open window outside game"
     },
     "welcome": {
-        "title": "Welcome to CptWesley's Minimap",
+        "title": "Welcome to New.me Map's",
         "primary": "Launch New World to access the minimap.",
         "settings": "You may also access the application settings while the game is not running.",
         "discord": "Feel free to join our Discord server for questions, help, and suggestions you might have: <1>{{discord}}<1>.",
@@ -76,9 +76,9 @@
         "overlay": {
             "_": "In-game overlay",
             "alwaysLaunchDesktop": "Always open desktop window on launch",
-            "alwaysLaunchDesktopTooltip": "Always opens the desktop window when launching CptWesley's Minimap, even if the game is running.",
+            "alwaysLaunchDesktopTooltip": "Always opens the desktop window when launching New.me Map's, even if the game is running.",
             "autoLaunchInGame": "Automatically open in-game window while this app is running",
-            "autoLaunchInGameTooltip": "Automatically opens the in-game window when the game is started and CptWesley's Minimap is running.",
+            "autoLaunchInGameTooltip": "Automatically opens the in-game window when the game is started and New.me Map's is running.",
             "compassMode": "Overlay Compass Mode",
             "compassModeTooltip": "Enabling will make the player always face north and rotates the map around the player, like a classic minimap.",
             "opacity": "Overlay Opacity",

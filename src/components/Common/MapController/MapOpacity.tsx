@@ -1,6 +1,8 @@
 import { DesktopAppContext } from '@/contexts/DesktopAppContext';
+import { chestsFormattedData } from '@/helpers/markersController';
 import React, { useContext, useEffect, useState } from 'react';
 import { RangeWithController } from '..';
+import markerJson from '../Map/markersUpdated.json';
 
 export const MapOpacity = () => {
     const { mapController, setMapController } = useContext(DesktopAppContext)
@@ -19,6 +21,7 @@ export const MapOpacity = () => {
                 maxValue={100}
                 perClickValue={5}
                 isZeroAccepted={false} />
+            <button onClick={() => console.log(chestsFormattedData(markerJson?.chests))} className="py-2 px-4 text-white">Click</button>
         </div>
     );
 };
