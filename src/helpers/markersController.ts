@@ -1,5 +1,20 @@
+const markerFormattedTitle = (title: string) => {
+  if (title.includes("__") && title.includes("$")) {
+    return title.split("__").join(" (").split("$").join(")");
+  } else {
+    return title.split("_").join(" ");
+  }
+};
+
+// Icon Name generate
+const iconNameGenerate = (data: any) => {
+  const keys = Object.keys(data);
+  const iconName = keys[0] ? data[keys[0]].icon : null;
+  return iconName;
+};
+
 // Unique Array Generator
-export const uniqueArray = (array: any[]) => {
+const uniqueArray = (array: any[]) => {
   return array.filter(
     (item, index, array) => array.lastIndexOf(item) === index
   );
@@ -10,7 +25,7 @@ interface Position {
   x: number;
   y: number;
 }
-export const calCulateLatLng = (position: Position) => {
+const calCulateLatLng = (position: Position) => {
   const xAdd: number = 8188,
     xDiv: number = 45.66,
     yAdd: number = -78.8,
@@ -31,15 +46,15 @@ export const calCulateLatLng = (position: Position) => {
   };
 };
 
-// Making ChestsObj
-export const chestsFormattedData = (chests: any) => {
+// ============== [ Making Chests Object ] ================
+const chestsFormattedData = (chests: any) => {
   const keys = Object.keys(chests)?.map((item) => item?.split("_"));
 
   // ==== [Categories Part] ====
   // Categories array
   const tempCategories = [
     ...uniqueArray(keys?.map((item) => item[0])),
-    "hasChild",
+    "hasChildCheckbox",
   ];
 
   // Categories object
@@ -57,11 +72,11 @@ export const chestsFormattedData = (chests: any) => {
       if (value[0] === item) {
         const arr = uniqueArray([
           ...categories[item],
-          "Tier" + value.slice(-1)[0]?.slice(-1)[0],
+          "Tier_" + value.slice(-1)[0]?.slice(-1)[0],
         ]);
-        categories[item] = arr as any;
+        categories[item] = arr.sort() as any;
       } else {
-        categories[item] = [...categories[item], "hasChild"];
+        categories[item] = [...categories[item], "hasChildCheckbox"];
       }
     });
   });
@@ -70,7 +85,7 @@ export const chestsFormattedData = (chests: any) => {
   tempCategories?.forEach((item) => {
     categories[item] = categories[item]?.reduce(
       (prevCategories: any, currentCategory: any) => {
-        if (currentCategory == "hasChild") {
+        if (currentCategory == "hasChildCheckbox") {
           return {
             ...prevCategories,
             [currentCategory]: true as any,
@@ -112,7 +127,7 @@ export const chestsFormattedData = (chests: any) => {
                 // [currentCollection]: chests[currentCollection] as any,
                 [currentCollection]: {
                   ...tempMarkersData,
-                  hasChild: true,
+                  hasMarkers: true,
                 } as any,
               };
             },
@@ -123,7 +138,7 @@ export const chestsFormattedData = (chests: any) => {
             ...prevCategories,
             [currentCategory]: {
               ...markerDataCollection,
-              hasChild: true,
+              hasChildCheckbox: true,
             } as any,
           };
         }
@@ -133,4 +148,153 @@ export const chestsFormattedData = (chests: any) => {
   });
 
   return categories;
+};
+
+// ============== [ Making Fishing Object ] ================
+const fishingFormattedData = (fishing: any) => {
+  const keys = Object.keys(fishing);
+
+  // temporary categories
+  const tempCategories = keys.map((item) => item.split("_").join("__") + "$");
+
+  // Categories object
+  const categories: any = tempCategories?.reduce(
+    (prevValue, currentValue) => ({
+      ...prevValue,
+      [currentValue]: [] as any,
+    }),
+    {}
+  );
+
+  // Assigning markers name array into every category
+  tempCategories.forEach((item) => {
+    const filterKey = item?.split("__").join("_").split("$").join("");
+    categories[item] = Object.keys(fishing[filterKey]);
+  });
+
+  // converting the markers name array to object
+  tempCategories.forEach((item) => {
+    const filterKey = item?.split("__").join("_").split("$").join("");
+    categories[item] = categories[item]?.reduce(
+      (prevValue: any, currentValue: any) => {
+        const tempMarkerData = fishing[filterKey][currentValue];
+        const singleMarkerData = calCulateLatLng({
+          y: tempMarkerData.y,
+          x: tempMarkerData.x,
+        });
+        return {
+          ...prevValue,
+          [currentValue]: {
+            ...singleMarkerData,
+            icon: filterKey,
+          },
+        };
+      },
+      {}
+    );
+  });
+
+  return categories;
+};
+
+// ============== [ Making Monsters Object ] ================
+const monstersFormattedData = (monsters: any) => {
+  const keys = Object.keys(monsters);
+
+  // Categories object
+  const categories: any = keys?.reduce(
+    (prevValue, currentValue) => ({
+      ...prevValue,
+      [currentValue]: [] as any,
+    }),
+    {}
+  );
+
+  // Assigning markers name array into every category
+  keys.forEach((item) => {
+    categories[item] = Object.keys(monsters[item]);
+  });
+
+  // converting the markers name array to object
+  keys.forEach((item) => {
+    categories[item] = categories[item]?.reduce(
+      (prevValue: any, currentValue: any) => {
+        const tempMarkerData = monsters[item][currentValue];
+        const singleMarkerData = calCulateLatLng({
+          y: tempMarkerData.y,
+          x: tempMarkerData.x,
+        });
+        return {
+          ...prevValue,
+          [currentValue]: {
+            ...singleMarkerData,
+            icon: item,
+          },
+        };
+      },
+      {}
+    );
+  });
+
+  return categories;
+};
+
+// ============== [ Making NPC Object ] ================
+const npcFormattedData = (npc: any) => {
+  const keys = Object.keys(npc);
+
+  // Categories object
+  const categories: any = keys?.reduce((prevValue, currentValue) => {
+    return {
+      ...prevValue,
+      [currentValue]: [] as any,
+    };
+  }, {});
+
+  // Assigning markers name array into every category
+  keys.forEach((item) => {
+    categories[item] = [...Object.keys(npc[item]), "hideCheckboxIcon"];
+  });
+
+  // converting the markers name array to object
+  keys.forEach((item) => {
+    categories[item] = categories[item]?.reduce(
+      (prevValue: any, currentValue: any) => {
+        if (currentValue != "hideCheckboxIcon") {
+          const tempMarkerData = npc[item][currentValue];
+          const singleMarkerData = calCulateLatLng({
+            y: tempMarkerData.y,
+            x: tempMarkerData.x,
+          });
+          return {
+            ...prevValue,
+            [currentValue]: {
+              ...singleMarkerData,
+              icon: tempMarkerData.icon,
+              name: tempMarkerData.name,
+            },
+          };
+        } else {
+          return {
+            ...prevValue,
+            [currentValue]: true,
+          };
+        }
+      },
+      {}
+    );
+  });
+
+  return categories;
+};
+
+export {
+  markerFormattedTitle,
+  uniqueArray,
+  iconNameGenerate,
+  calCulateLatLng,
+  chestsFormattedData,
+  fishingFormattedData,
+  monstersFormattedData,
+  npcFormattedData,
 };

@@ -7,8 +7,7 @@ import { ButtonFilterItem } from "./ButtonFilterItem";
 
 export const FilterBox = () => {
     const { filterData, setFilterData } = useContext(DesktopAppContext)
-
-
+    console.log(filterData);
     return (
         <div className={`transition-all duration-200 fixed bottom-0 left-[220px] ${filterData?.active ? "h-[200px] w-[778px] z-[1005] rounded-t-xl p-4 bg-dark1 font-imfell" : "h-0 overflow-hidden"}`}>
             <h2 className="text-yellow-300 text-xl  text-center">Filters</h2>

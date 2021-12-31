@@ -12,6 +12,7 @@ type Props = {
 export const ButtonFilterItem = ({ buttonData, filterData = {} as FilterDataType, setFilterData, isActive = false }: Props) => {
     const [active, setActive] = useState(isActive);
     const [postions, setPostions] = useState({ top: 0, left: 0 })
+    const tracker = [buttonData?.text];
 
     const handleClick = (e: any) => {
         setActive(true);
@@ -27,21 +28,15 @@ export const ButtonFilterItem = ({ buttonData, filterData = {} as FilterDataType
         setFilterData({ ...filterData, activeBtn: null })
     }
 
-    const filterSecondLvlData = filterData?.markerData?.[buttonData?.text];
-    console.log(filterSecondLvlData);
-
-    const keys = Object.keys(filterSecondLvlData);
-    const chkBoxesData = keys.map((item, index) => ({ id: index, title: item, img: "/assets/images/icon2.png" }))
     return (
         <>
             {
                 filterData?.active && filterData?.activeBtn?.id === buttonData?.id && active &&
                 <FilterModal
                     key={filterData?.activeBtn?.id}
-                    checkboxesData={chkBoxesData}
                     positions={postions}
                     handleClose={handleClose}
-                    filterSecondLvlData={filterSecondLvlData} />
+                    tracker={tracker} />
             }
             <button
                 onClick={(e: any) => handleClick(e)}

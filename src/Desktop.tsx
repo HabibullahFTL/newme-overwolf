@@ -3,13 +3,19 @@ import markerJson from './components/Common/Map/markersUpdated.json';
 import { DesktopLayout } from './components/Layouts/DekstopLayout/DesktopLayout';
 import { DesktopAppContext, FilterDataType, MarkerDataType, MenuDataType, UserDataType } from './contexts/DesktopAppContext';
 import DesktopHeader from './DesktopHeader';
-import { chestsFormattedData } from './helpers/markersController';
+import { chestsFormattedData, fishingFormattedData, monstersFormattedData, npcFormattedData } from './helpers/markersController';
 import { JournalScreen, MapScreen } from './screens/DesktopScrens';
 
 export default function Desktop() {
     const chests = chestsFormattedData(markerJson?.chests);
+    const fishing = fishingFormattedData(markerJson?.fishing);
+    const monsters = monstersFormattedData(markerJson?.monsters);
+    const NPC = npcFormattedData(markerJson?.npc);
     const customMarkersData = {
-        chests
+        chests,
+        fishing,
+        monsters,
+        NPC,
     }
     const keys = Object.keys(customMarkersData);
     const btnsData = keys.map((item, index) => ({ id: index, text: item }))
