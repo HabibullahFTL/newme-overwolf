@@ -5,26 +5,25 @@ import { BiCheck } from 'react-icons/bi';
 import { RiArrowRightSFill } from 'react-icons/ri';
 import ThirdLvlCheckbox from './ThirdLvlCheckbox';
 
-interface SelectBoxDataType {
+interface CheckboxesDataType {
     checked: boolean;
     id: number,
     title: string,
-    img: string
 }
 
 type Props = {
     id: number,
     title: string,
-    img: string,
     checked: boolean,
     tracker: string[],
-    firstLvlChkBoxesData: any
+    firstLvlChkBoxesData: any,
+    setSecondLvlCheckBoxes: React.Dispatch<React.SetStateAction<CheckboxesDataType[] | undefined>>
 };
 
-const SecondLvlCheckbox = ({ id, title, img, checked, tracker, firstLvlChkBoxesData }: Props) => {
-    const { filterData } = useContext(DesktopAppContext)
+const SecondLvlCheckbox = ({ id, title, checked, tracker, firstLvlChkBoxesData, setSecondLvlCheckBoxes }: Props) => {
+    const { filterData, setFilterData } = useContext(DesktopAppContext)
     const [secondLvlChkBoxesData, setSecondLvlChkBoxesData] = useState<any>()
-    const [thirdLvlCheckBoxes, setThirdLvlCheckBoxes] = useState<any>()
+    const [thirdLvlCheckBoxes, setThirdLvlCheckBoxes] = useState<CheckboxesDataType[]>()
     const [isOpenChild, setIsOpenChild] = useState(false)
 
     useEffect(() => {
@@ -34,9 +33,25 @@ const SecondLvlCheckbox = ({ id, title, img, checked, tracker, firstLvlChkBoxesD
         setThirdLvlCheckBoxes(Object.keys(
             firstLvlChkBoxesData[tracker[2]])
             ?.filter(name => name != "hasChildCheckbox")
-            ?.map((chkboxName, index) => ({ id: index, title: chkboxName, img: null }))
+            ?.map((chkboxName, index) => ({ id: index, title: chkboxName, checked: checked ? true : false }))
         )
-    }, [])
+
+        if (!firstLvlChkBoxesData[tracker[2]].hasChildCheckbox) {
+            if (checked) {
+                const markersData = Object.keys(firstLvlChkBoxesData[tracker[2]])?.filter(item => item != "hideCheckboxIcon")?.map(item => firstLvlChkBoxesData[tracker[2]][item]);
+                setFilterData(prevValue => ({ ...prevValue, currentMarkers: [...prevValue.currentMarkers, ...markersData] }))
+                console.log("2nd lvl adding");
+            } else {
+                const markersID = Object.keys(firstLvlChkBoxesData[tracker[2]])?.filter(item => item != "hideCheckboxIcon")?.map(item => firstLvlChkBoxesData[tracker[2]][item].id);
+
+                setFilterData(prevValue => {
+                    const markers = prevValue.currentMarkers.filter((item: any) => !markersID.includes(item.id))
+                    return { ...prevValue, currentMarkers: [...markers] }
+                })
+                console.log("2nd lvl not adding");
+            }
+        }
+    }, [checked])
 
     const calculatedTitle = title?.length > 20 ? title.slice(0, 17) + "..." : title;
     return (
@@ -56,29 +71,16 @@ const SecondLvlCheckbox = ({ id, title, img, checked, tracker, firstLvlChkBoxesD
                     <div className="relative inline-block w-[18px] h-[18px] mr-2 bg-dark5">
                         <input
                             checked={checked}
+                            onChange={() => setSecondLvlCheckBoxes((prevValue: any) => {
+                                const tempArray = prevValue?.map((item: any) => item.id == id ? { id, title, checked: !checked } : item);
+                                return tempArray
+                            })}
                             className="filter-checkbox absolute top-0 left-0 appearance-none w-[18px] h-[18px] outline-none border-2 border-white rounded" type="checkbox" />
                         <BiCheck className="absolute top-[2px] left-[2px] text-dark1" />
                     </div>
                     {markerFormattedTitle(calculatedTitle)}
                 </label>
             </div>
-            {
-                secondLvlChkBoxesData?.hasChildCheckbox && isOpenChild &&
-                <div className="col-span-12 space-y-2 mt-2 ml-2">
-                    {
-                        thirdLvlCheckBoxes?.map((chkboxData: any) => (
-                            <ThirdLvlCheckbox
-                                key={chkboxData?.id}
-                                id={chkboxData?.id}
-                                img={chkboxData?.img}
-                                title={chkboxData?.title}
-                                checked={false}
-                                tracker={[...tracker, chkboxData?.title]}
-                                secondLvlChkBoxesData={secondLvlChkBoxesData} />
-                        ))
-                    }
-                </div>
-            }
             {
                 !secondLvlChkBoxesData?.hasChildCheckbox &&
                 <div className="col-span-2">
@@ -90,6 +92,20 @@ const SecondLvlCheckbox = ({ id, title, img, checked, tracker, firstLvlChkBoxesD
                     </div>
                 </div>
             }
+            <div className={`col-span-12  ${secondLvlChkBoxesData?.hasChildCheckbox && isOpenChild ? "space-y-2 mt-2 ml-2" : "h-0 overflow-hidden"}`}>
+                {
+                    secondLvlChkBoxesData?.hasChildCheckbox && thirdLvlCheckBoxes?.map((chkboxData: CheckboxesDataType) => (
+                        <ThirdLvlCheckbox
+                            key={chkboxData?.id}
+                            id={chkboxData?.id}
+                            title={chkboxData?.title}
+                            checked={chkboxData?.checked}
+                            tracker={[...tracker, chkboxData?.title]}
+                            secondLvlChkBoxesData={secondLvlChkBoxesData}
+                            setThirdLvlCheckBoxes={setThirdLvlCheckBoxes} />
+                    ))
+                }
+            </div>
         </div>
     )
 }

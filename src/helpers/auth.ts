@@ -6,7 +6,7 @@ interface URLSchemeType {
 }
 const CLIENT_ID = "766b8aab7f3f4406a5d4844f5a0c6bd7";
 const AUTHORIZE_ENDPOINT = "https://eu.battle.net/oauth/authorize";
-const redirectUri = "https://wowme.gg/oauth/callback_overwolf";
+const redirectUri = "https://wowme.gg/newme/oauth/callback_overwolf";
 const scope = ["wow.profile", "openid"];
 
 export const scopesString = encodeURIComponent(scope.join(" "));

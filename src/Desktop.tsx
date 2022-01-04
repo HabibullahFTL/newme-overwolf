@@ -23,7 +23,7 @@ export default function Desktop() {
     const customFilterData = {
         markerData: customMarkersData as MarkerDataType,
         filterBtnData: btnsData,
-        currentMarkers: {},
+        currentMarkers: [],
         activeBtn: null,
         active: false
     }

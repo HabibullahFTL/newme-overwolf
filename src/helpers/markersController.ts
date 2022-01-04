@@ -1,3 +1,6 @@
+import { SetFilterDataType } from "@/contexts/DesktopAppContext";
+import { v4 as uuidv4 } from "uuid";
+
 const markerFormattedTitle = (title: string) => {
   if (title.includes("__") && title.includes("$")) {
     return title.split("__").join(" (").split("$").join(")");
@@ -45,6 +48,71 @@ const calCulateLatLng = (position: Position) => {
     lng: (position.x - xAdd) / xDiv,
   };
 };
+// handling single checkbox data
+export const handleOnCheckboxClick = (
+  title: string,
+  checked: boolean,
+  parentData: any,
+  setParentCheckbox: any,
+  setChildCheckboxes: any,
+  filterData: any,
+  setFilterData: SetFilterDataType
+) => {
+  if (parentData?.hasChildCheckbox) {
+    if (checked) {
+      setParentCheckbox((prevValue: any) =>
+        prevValue.map((item: any) =>
+          item.title === title ? { ...item, checked: false } : item
+        )
+      );
+      setChildCheckboxes != null &&
+        setChildCheckboxes((prevValue: any) =>
+          prevValue?.map((item: any) => ({ ...item, checked: false }))
+        );
+    } else {
+      setParentCheckbox((prevValue: any) =>
+        prevValue.map((item: any) =>
+          item.title === title ? { ...item, checked: true } : item
+        )
+      );
+      setChildCheckboxes != null &&
+        setChildCheckboxes((prevValue: any) =>
+          prevValue?.map((item: any) => ({ ...item, checked: true }))
+        );
+    }
+  } else {
+    const keys = Object.keys(parentData);
+    const markers = keys
+      ?.map((key) => parentData[key])
+      ?.filter((mData) => typeof mData == "object");
+
+    const idList = markers?.map((item) => item.id);
+    if (checked) {
+      setParentCheckbox((prevValue: any) =>
+        prevValue.map((item: any) =>
+          item.title === title ? { ...item, checked: false } : item
+        )
+      );
+      const tempMarkers = filterData?.currentMarkers?.filter(
+        (item: any) => !idList.includes(item.id)
+      );
+      setFilterData((prevValue) => ({
+        ...prevValue,
+        currentMarkers: tempMarkers,
+      }));
+    } else {
+      setParentCheckbox((prevValue: any) =>
+        prevValue.map((item: any) =>
+          item.title === title ? { ...item, checked: true } : item
+        )
+      );
+      setFilterData((prevValue) => ({
+        ...prevValue,
+        currentMarkers: [...prevValue?.currentMarkers, ...markers],
+      }));
+    }
+  }
+};
 
 // ============== [ Making Chests Object ] ================
 const chestsFormattedData = (chests: any) => {
@@ -83,68 +151,73 @@ const chestsFormattedData = (chests: any) => {
 
   // Assigning Sub Categories Data into Tier objects
   tempCategories?.forEach((item) => {
-    categories[item] = categories[item]?.reduce(
-      (prevCategories: any, currentCategory: any) => {
-        if (currentCategory == "hasChildCheckbox") {
-          return {
-            ...prevCategories,
-            [currentCategory]: true as any,
-          };
-        } else {
-          // Making markers collection name
-          const markerCollectionNames = keys
-            ?.filter(
-              (categoryArr) =>
-                item == categoryArr[0] &&
-                currentCategory.slice(-1)[0] ==
-                  categoryArr.slice(-1)[0]?.slice(-1)[0]
-            )
-            ?.map((filteredArr) => filteredArr?.join("_"));
+    if (item == "hasChildCheckbox") {
+      categories[item] = true;
+    } else {
+      categories[item] = categories[item]?.reduce(
+        (prevCategories: any, currentCategory: any) => {
+          if (currentCategory == "hasChildCheckbox") {
+            return {
+              ...prevCategories,
+              [currentCategory]: true as any,
+            };
+          } else {
+            // Making markers collection name
+            const markerCollectionNames = keys
+              ?.filter(
+                (categoryArr) =>
+                  item == categoryArr[0] &&
+                  currentCategory.slice(-1)[0] ==
+                    categoryArr.slice(-1)[0]?.slice(-1)[0]
+              )
+              ?.map((filteredArr) => filteredArr?.join("_"));
 
-          const markerDataCollection = markerCollectionNames?.reduce(
-            (prevCollections: any, currentCollection) => {
-              const markerNames = Object.keys(chests[currentCollection]);
-              const tempMarkersData = markerNames?.reduce(
-                (prevNames: any, currentName) => {
-                  const tempMarkerData = chests[currentCollection][currentName];
-                  const singleMarkerData = calCulateLatLng({
-                    y: tempMarkerData.y,
-                    x: tempMarkerData.x,
-                  });
+            const markerDataCollection = markerCollectionNames?.reduce(
+              (prevCollections: any, currentCollection) => {
+                const markerNames = Object.keys(chests[currentCollection]);
+                const tempMarkersData = markerNames?.reduce(
+                  (prevNames: any, currentName) => {
+                    const tempMarkerData =
+                      chests[currentCollection][currentName];
+                    const id = uuidv4();
+                    const singleMarkerData = calCulateLatLng({
+                      y: tempMarkerData.y,
+                      x: tempMarkerData.x,
+                    });
 
-                  return {
-                    ...prevNames,
-                    [currentName]: {
-                      ...singleMarkerData,
-                      icon: currentCollection,
-                    },
-                  };
-                },
-                {}
-              );
-              return {
-                ...prevCollections,
-                // [currentCollection]: chests[currentCollection] as any,
-                [currentCollection]: {
-                  ...tempMarkersData,
-                  hasMarkers: true,
-                } as any,
-              };
-            },
-            {}
-          );
+                    return {
+                      ...prevNames,
+                      [currentName]: {
+                        ...singleMarkerData,
+                        id,
+                        icon: currentCollection,
+                      },
+                    };
+                  },
+                  {}
+                );
+                return {
+                  ...prevCollections,
+                  [currentCollection]: {
+                    ...tempMarkersData,
+                  } as any,
+                };
+              },
+              {}
+            );
 
-          return {
-            ...prevCategories,
-            [currentCategory]: {
-              ...markerDataCollection,
-              hasChildCheckbox: true,
-            } as any,
-          };
-        }
-      },
-      {}
-    );
+            return {
+              ...prevCategories,
+              [currentCategory]: {
+                ...markerDataCollection,
+                hasChildCheckbox: true,
+              } as any,
+            };
+          }
+        },
+        {}
+      );
+    }
   });
 
   return categories;
@@ -178,6 +251,7 @@ const fishingFormattedData = (fishing: any) => {
     categories[item] = categories[item]?.reduce(
       (prevValue: any, currentValue: any) => {
         const tempMarkerData = fishing[filterKey][currentValue];
+        const id = uuidv4();
         const singleMarkerData = calCulateLatLng({
           y: tempMarkerData.y,
           x: tempMarkerData.x,
@@ -186,6 +260,7 @@ const fishingFormattedData = (fishing: any) => {
           ...prevValue,
           [currentValue]: {
             ...singleMarkerData,
+            id,
             icon: filterKey,
           },
         };
@@ -220,6 +295,7 @@ const monstersFormattedData = (monsters: any) => {
     categories[item] = categories[item]?.reduce(
       (prevValue: any, currentValue: any) => {
         const tempMarkerData = monsters[item][currentValue];
+        const id = uuidv4();
         const singleMarkerData = calCulateLatLng({
           y: tempMarkerData.y,
           x: tempMarkerData.x,
@@ -228,6 +304,7 @@ const monstersFormattedData = (monsters: any) => {
           ...prevValue,
           [currentValue]: {
             ...singleMarkerData,
+            id,
             icon: item,
           },
         };
@@ -262,6 +339,7 @@ const npcFormattedData = (npc: any) => {
       (prevValue: any, currentValue: any) => {
         if (currentValue != "hideCheckboxIcon") {
           const tempMarkerData = npc[item][currentValue];
+          const id = uuidv4();
           const singleMarkerData = calCulateLatLng({
             y: tempMarkerData.y,
             x: tempMarkerData.x,
@@ -271,6 +349,7 @@ const npcFormattedData = (npc: any) => {
             [currentValue]: {
               ...singleMarkerData,
               icon: tempMarkerData.icon,
+              id,
               name: tempMarkerData.name,
             },
           };

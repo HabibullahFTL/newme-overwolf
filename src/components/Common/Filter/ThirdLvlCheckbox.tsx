@@ -4,30 +4,44 @@ import React, { useContext, useEffect, useState } from 'react';
 import { BiCheck } from 'react-icons/bi';
 import { RiArrowRightSFill } from 'react-icons/ri';
 
-interface SelectBoxDataType {
+interface CheckboxesDataType {
     checked: boolean;
     id: number,
     title: string,
-    img: string
 }
 
 type Props = {
     id: number,
     title: string,
-    img: string,
     checked: boolean,
     tracker: string[],
-    secondLvlChkBoxesData: any
+    secondLvlChkBoxesData: any,
+    setThirdLvlCheckBoxes: React.Dispatch<React.SetStateAction<CheckboxesDataType[] | undefined>>
 };
 
-const ThirdLvlCheckbox = ({ id, title, img, checked, tracker, secondLvlChkBoxesData }: Props) => {
-    const { filterData } = useContext(DesktopAppContext)
+const ThirdLvlCheckbox = ({ id, title, checked, tracker, secondLvlChkBoxesData, setThirdLvlCheckBoxes }: Props) => {
+    const { filterData, setFilterData } = useContext(DesktopAppContext)
     const [thirdLvlChkBoxesData, setThirdLvlChkBoxesData] = useState<any>()
     const [isOpenChild, setIsOpenChild] = useState(false)
 
     useEffect(() => {
         setThirdLvlChkBoxesData(secondLvlChkBoxesData[tracker[3]]);
     }, [])
+    useEffect(() => {
+        if (checked) {
+            const markersData = Object.keys(secondLvlChkBoxesData[tracker[3]])?.filter(item => item != "hideCheckboxIcon")?.map(item => secondLvlChkBoxesData[tracker[3]][item]);
+            setFilterData(prevValue => ({ ...prevValue, currentMarkers: [...prevValue.currentMarkers, ...markersData] }))
+            console.log("3rd lvl adding");
+        } else {
+            const markersID = Object.keys(secondLvlChkBoxesData[tracker[3]])?.filter(item => item != "hideCheckboxIcon")?.map(item => secondLvlChkBoxesData[tracker[3]][item].id);
+
+            setFilterData(prevValue => {
+                const markers = prevValue.currentMarkers.filter((item: any) => !markersID.includes(item.id))
+                return { ...prevValue, currentMarkers: [...markers] }
+            })
+            console.log("3rd lvl not adding");
+        }
+    }, [checked])
 
     const calculatedTitle = title?.length > 20 ? title.slice(0, 17) + "..." : title;
     return (
@@ -47,6 +61,10 @@ const ThirdLvlCheckbox = ({ id, title, img, checked, tracker, secondLvlChkBoxesD
                     <div className="relative inline-block w-[18px] h-[18px] mr-2 bg-dark5">
                         <input
                             checked={checked}
+                            onChange={() => setThirdLvlCheckBoxes((prevValue: any) => {
+                                const tempArray = prevValue?.map((item: any) => item.id == id ? { id, title, checked: !checked } : item);
+                                return tempArray
+                            })}
                             className="filter-checkbox absolute top-0 left-0 appearance-none w-[18px] h-[18px] outline-none border-2 border-white rounded" type="checkbox" />
                         <BiCheck className="absolute top-[2px] left-[2px] text-dark1" />
                     </div>

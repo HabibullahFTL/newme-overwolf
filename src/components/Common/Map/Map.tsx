@@ -6,7 +6,7 @@ import markerJson from './markersUpdated.json';
 
 export const Map = () => {
     const [position, setPosition] = React.useState<any | null>(null)
-    const { setFilterData } = useContext(DesktopAppContext)
+    const { filterData, setFilterData } = useContext(DesktopAppContext)
 
     const xAdd: number = 8188,
         xDiv: number = 45.66,
@@ -83,50 +83,30 @@ export const Map = () => {
             y: 2718.424,
         }
     ]
-
-    // function LocationMarker() {
-    //     const [position, setPos] = useState({ lat: 0, lng: 0 })
-    //     useMapEvents({
-    //         click(e) {
-    //             setPos(e.latlng)
-    //         },
-    //     })
-
-    //     return position === null ? null : (
-    //         <Marker position={position}>
-    //             <Popup> {JSON.stringify(position)}</Popup>
-    //         </Marker>
-    //     )
-    // }
-
-    const myIcon = L.icon({
-        iconUrl: "/assets/images/markerIcons/marauder.png",
-    })
     return (
         <div className="leaflet-container">
             <MapContainer center={{ lat: 0, lng: 0 }} zoom={2} zoomControl={false} scrollWheelZoom={true} >
                 <TileLayer
                     attribution='&copy; <a href="http://algosolver.com">Algosolver</a> contributors'
-                    // url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     url="map/{z}/{x}/{y}.jpg"
                     minZoom={2}
                     maxZoom={6}
                     noWrap={true}
                 />
-
-                {/*
-                It's for showing a current icon
-                 <LocationMarker /> 
-                 */}
                 {
-                    data && data?.map((pos, index) => {
-                        let tmp = { lat: (yAdd + yM * pos.y + yP * (pos.y ** 2) + yQ * (pos.y ** 3) + yR * (pos.y ** 4)), lng: (pos.x - xAdd) / xDiv }
+                    filterData?.currentMarkers && filterData?.currentMarkers?.map((markerData: any) => {
+                        // let tmp = { lat: (yAdd + yM * pos.y + yP * (pos.y ** 2) + yQ * (pos.y ** 3) + yR * (pos.y ** 4)), lng: (pos.x - xAdd) / xDiv }
 
+
+                        const myIcon = L.icon({
+                            iconUrl: `/assets/images/markerIcons/${markerData.icon}.png`
+                        })
+                        const position = { lat: markerData.lat, lng: markerData.lng }
                         return (
-                            <Marker icon={myIcon} position={tmp} draggable={false} ref={(r) => { r?.openPopup() }} key={index}>
+                            <Marker icon={myIcon} position={position} draggable={false} ref={(r) => { r?.openPopup() }} key={markerData.id}>
                                 {/* <Tooltip direction="bottom" offset={[0, 20]} opacity={1} permanent>Hello</Tooltip> */}
-                                <Popup position={tmp}>
-                                    Current location: <pre>{JSON.stringify(tmp, null, 2)} - {JSON.stringify(pos, null, 2)}</pre>
+                                <Popup position={position}>
+                                    Current location: <pre>{JSON.stringify(position, null, 2)} - {JSON.stringify(pos, null, 2)}</pre>
                                 </Popup>
                             </Marker>
                         );
