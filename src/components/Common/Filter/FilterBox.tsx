@@ -15,7 +15,7 @@ export const FilterBox = () => {
                 <div className="h-[75px] mx-8 my-[10px] overflow-x-hidden overflow-y-auto scrollbar">
                     <div className="grid grid-cols-6 gap-2 h-full w-[663px] mr-3">
                         {
-                            filterData?.filterBtnData?.map((data: ButtonDataType) => <ButtonFilterItem
+                            filterData?.filteringOptions?.filterButtons?.map((data: ButtonDataType) => <ButtonFilterItem
                                 key={data.id}
                                 buttonData={data}
                                 filterData={filterData}

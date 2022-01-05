@@ -22,6 +22,7 @@ export interface FilterDataType {
     markerData: MarkerDataType,
     filterBtnData: ButtonDataType[],
     currentMarkers: any,
+    filteringOptions: any,
     activeBtn: null | ButtonDataType,
     active: boolean
 }

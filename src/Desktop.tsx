@@ -3,7 +3,7 @@ import markerJson from './components/Common/Map/markersUpdated.json';
 import { DesktopLayout } from './components/Layouts/DekstopLayout/DesktopLayout';
 import { DesktopAppContext, FilterDataType, MarkerDataType, MenuDataType, UserDataType } from './contexts/DesktopAppContext';
 import DesktopHeader from './DesktopHeader';
-import { chestsFormattedData, fishingFormattedData, monstersFormattedData, npcFormattedData } from './helpers/markersController';
+import { chestsFormattedData, fishingFormattedData, getAllCheckboxes, monstersFormattedData, npcFormattedData } from './helpers/markersController';
 import { JournalScreen, MapScreen } from './screens/DesktopScrens';
 
 export default function Desktop() {
@@ -11,19 +11,21 @@ export default function Desktop() {
     const fishing = fishingFormattedData(markerJson?.fishing);
     const monsters = monstersFormattedData(markerJson?.monsters);
     const NPC = npcFormattedData(markerJson?.npc);
-    const customMarkersData = {
+    const customMarkersData: any = {
         chests,
         fishing,
         monsters,
         NPC,
     }
-    const keys = Object.keys(customMarkersData);
+    const keys = [...Object.keys(customMarkersData), "filterButtons"];
     const btnsData = keys.map((item, index) => ({ id: index, text: item }))
+    const filteringOptions = getAllCheckboxes(customMarkersData);
 
     const customFilterData = {
         markerData: customMarkersData as MarkerDataType,
         filterBtnData: btnsData,
         currentMarkers: [],
+        filteringOptions,
         activeBtn: null,
         active: false
     }

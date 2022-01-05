@@ -31,7 +31,6 @@ const ThirdLvlCheckbox = ({ id, title, checked, tracker, secondLvlChkBoxesData, 
         if (checked) {
             const markersData = Object.keys(secondLvlChkBoxesData[tracker[3]])?.filter(item => item != "hideCheckboxIcon")?.map(item => secondLvlChkBoxesData[tracker[3]][item]);
             setFilterData(prevValue => ({ ...prevValue, currentMarkers: [...prevValue.currentMarkers, ...markersData] }))
-            console.log("3rd lvl adding");
         } else {
             const markersID = Object.keys(secondLvlChkBoxesData[tracker[3]])?.filter(item => item != "hideCheckboxIcon")?.map(item => secondLvlChkBoxesData[tracker[3]][item].id);
 
@@ -39,7 +38,6 @@ const ThirdLvlCheckbox = ({ id, title, checked, tracker, secondLvlChkBoxesData, 
                 const markers = prevValue.currentMarkers.filter((item: any) => !markersID.includes(item.id))
                 return { ...prevValue, currentMarkers: [...markers] }
             })
-            console.log("3rd lvl not adding");
         }
     }, [checked])
 
@@ -71,12 +69,6 @@ const ThirdLvlCheckbox = ({ id, title, checked, tracker, secondLvlChkBoxesData, 
                     {markerFormattedTitle(calculatedTitle)}
                 </label>
             </div>
-            {
-                secondLvlChkBoxesData?.hasChildCheckbox && isOpenChild &&
-                <div className="col-span-12">
-
-                </div>
-            }
             {
                 !thirdLvlChkBoxesData?.hasChildCheckbox &&
                 <div className="col-span-2">

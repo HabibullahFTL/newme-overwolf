@@ -25,20 +25,50 @@ export const FilterModal = ({ positions = { top: 0, left: 0 }, handleClose, trac
     const [firstLvlCheckBoxes, setFirstLvlCheckBoxes] = useState<CheckboxesDataType[]>([] as CheckboxesDataType[])
     const [modalData, setModalData] = useState<any>()
     const { filterData, setFilterData } = useContext(DesktopAppContext)
-    console.log(filterData);
+    console.log(filterData?.filteringOptions?.[tracker[0]]?.checkboxes);
 
     const keys = Object.keys(filterData?.markerData?.[tracker[0]]);
 
     useEffect(() => {
-        setFirstLvlCheckBoxes(keys.map((item, index) => ({ id: index, title: item, checked: false }))?.filter(data => data?.title != "hasChildCheckbox"))
+        setFirstLvlCheckBoxes(filterData?.filteringOptions?.[tracker[0]]?.checkboxes)
         setModalData(filterData?.markerData?.[tracker[0]])
     }, [])
 
     const handleSelectAll = () => {
-        setFirstLvlCheckBoxes(prevValue => prevValue?.map((obj) => ({ ...obj, checked: true })));
+        setFirstLvlCheckBoxes((prevValue: any) => {
+            const checkboxesData = prevValue?.map((item: any) => ({ ...item, checked: true }));
+            const tempData = {
+                ...filterData,
+                filteringOptions: {
+                    ...filterData?.filteringOptions,
+                    [tracker[0]]: {
+                        ...filterData?.filteringOptions?.[tracker[0]],
+                        checkboxes: checkboxesData
+                    }
+                }
+            }
+            setFilterData(tempData)
+            return checkboxesData
+        })
     }
     const handleDeselectAll = () => {
-        setFirstLvlCheckBoxes(prevValue => prevValue?.map((obj) => ({ ...obj, checked: false })));
+        // Need to delete all ids of child checkboxes
+        setFirstLvlCheckBoxes((prevValue: any) => {
+            const checkboxesData = prevValue?.map((item: any) => ({ ...item, checked: false }));
+            // const testData = Object.keys(filterData?.markerData?.[tracker[0]])?.filter(item=>item != "hasChildCheckbox")?.map(name=>{})
+            const tempData = {
+                ...filterData,
+                filteringOptions: {
+                    ...filterData?.filteringOptions,
+                    [tracker[0]]: {
+                        ...filterData?.filteringOptions?.[tracker[0]],
+                        checkboxes: checkboxesData
+                    }
+                }
+            }
+            setFilterData(tempData)
+            return checkboxesData
+        })
     }
     return (
         <div className={`absolute bottom-[${positions?.top === 0 ? 70 : 25}px] left-[${positions?.left + 85}px] z-[1020] w-[285px] h-[300px] bg-dark1 border border-gray-700 font-arial rounded px-4 py-3`}>
@@ -55,7 +85,7 @@ export const FilterModal = ({ positions = { top: 0, left: 0 }, handleClose, trac
                             key={item?.id}
                             id={item?.id}
                             title={item?.title}
-                            checked={item?.checked ? true : false}
+                            checked={item?.checked}
                             tracker={[...tracker, item?.title]}
                             setFirstLvlCheckBoxes={setFirstLvlCheckBoxes}
                             modalData={modalData} />

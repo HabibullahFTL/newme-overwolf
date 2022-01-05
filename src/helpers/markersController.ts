@@ -114,6 +114,109 @@ export const handleOnCheckboxClick = (
   }
 };
 
+// ============== [ Checkboxes Collection ] ===============
+const getAllCheckboxes = (customMarkersData: any) => {
+  const keys = [...Object.keys(customMarkersData), "filterButtons"];
+  const filteringOptions = keys.reduce((prevValues, currentValue) => {
+    if (currentValue == "filterButtons") {
+      // Here adding filtering buttons
+      const btns = keys
+        .filter((btnName) => btnName != "filterButtons")
+        .map((item, index) => ({ id: index, text: item }));
+      return { ...prevValues, [currentValue]: btns };
+    } else {
+      // Here adding filtering checkboxes structure
+      const tempFilterBtnLvlData = [
+        ...Object.keys(customMarkersData[currentValue]),
+        "checkboxes",
+      ];
+      const filterBtnLvlData = tempFilterBtnLvlData.reduce(
+        (prevFirstLvlData: any, currentFirstLvlData: any) => {
+          if (currentFirstLvlData == "checkboxes") {
+            const firstLvlCheckboxes = Object.keys(
+              customMarkersData[currentValue]
+            )
+              .filter((item) => item != "hasChildCheckbox")
+              .map((name, index) => ({
+                id: index,
+                title: name,
+                checked: false,
+              }));
+            return {
+              ...prevFirstLvlData,
+              [currentFirstLvlData]: firstLvlCheckboxes,
+            };
+          } else if (currentFirstLvlData == "hasChildCheckbox") {
+            return { ...prevFirstLvlData, [currentFirstLvlData]: true };
+          } else {
+            // Checking has child checkboxes and added checkboxes if has child checkboxes
+            if (customMarkersData[currentValue].hasChildCheckbox) {
+              const tempFirstLvlArray = [
+                ...Object.keys(
+                  customMarkersData[currentValue][currentFirstLvlData]
+                ),
+                "checkboxes",
+              ];
+              const firstLvlData = tempFirstLvlArray.reduce(
+                (prevSecondLvlData: any, currentSecondLvlData: any) => {
+                  if (currentSecondLvlData == "hasChildCheckbox") {
+                    return {
+                      ...prevSecondLvlData,
+                      [currentSecondLvlData]: true,
+                    };
+                  } else if (currentSecondLvlData == "checkboxes") {
+                    const secondLvlCheckboxes = Object.keys(
+                      customMarkersData[currentValue][currentFirstLvlData]
+                    )
+                      .filter((item) => item != "hasChildCheckbox")
+                      .map((name, index) => ({
+                        id: index,
+                        title: name,
+                        checked: false,
+                      }));
+                    return {
+                      ...prevSecondLvlData,
+                      [currentSecondLvlData]: secondLvlCheckboxes,
+                    };
+                  } else {
+                    const thirdLvlCheckboxes = {
+                      checkboxes: Object.keys(
+                        customMarkersData[currentValue][currentFirstLvlData][
+                          currentSecondLvlData
+                        ]
+                      )
+                        .filter((item) => item != "hasChildCheckbox")
+                        .map((name, index) => ({
+                          id: index,
+                          title: name,
+                          checked: false,
+                        })),
+                    };
+                    return {
+                      ...prevSecondLvlData,
+                      [currentSecondLvlData]: thirdLvlCheckboxes,
+                    };
+                  }
+                },
+                {}
+              );
+              return {
+                ...prevFirstLvlData,
+                [currentFirstLvlData]: firstLvlData,
+              };
+            } else {
+              return prevFirstLvlData;
+            }
+          }
+        },
+        {}
+      );
+      return { ...prevValues, [currentValue]: filterBtnLvlData };
+    }
+  }, {});
+  return filteringOptions;
+};
+
 // ============== [ Making Chests Object ] ================
 const chestsFormattedData = (chests: any) => {
   const keys = Object.keys(chests)?.map((item) => item?.split("_"));
@@ -372,6 +475,7 @@ export {
   uniqueArray,
   iconNameGenerate,
   calCulateLatLng,
+  getAllCheckboxes,
   chestsFormattedData,
   fishingFormattedData,
   monstersFormattedData,

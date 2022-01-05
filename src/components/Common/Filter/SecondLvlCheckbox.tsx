@@ -30,17 +30,14 @@ const SecondLvlCheckbox = ({ id, title, checked, tracker, firstLvlChkBoxesData, 
         // Updating Second Level Checkbox Data
         setSecondLvlChkBoxesData(firstLvlChkBoxesData[tracker[2]]);
         // Updating only checkboxes title with structure
-        setThirdLvlCheckBoxes(Object.keys(
-            firstLvlChkBoxesData[tracker[2]])
-            ?.filter(name => name != "hasChildCheckbox")
-            ?.map((chkboxName, index) => ({ id: index, title: chkboxName, checked: checked ? true : false }))
-        )
+        setThirdLvlCheckBoxes(filterData?.filteringOptions?.[tracker[0]]?.[tracker[1]]?.[tracker[2]]?.checkboxes)
+    }, [])
 
+    useEffect(() => {
         if (!firstLvlChkBoxesData[tracker[2]].hasChildCheckbox) {
             if (checked) {
                 const markersData = Object.keys(firstLvlChkBoxesData[tracker[2]])?.filter(item => item != "hideCheckboxIcon")?.map(item => firstLvlChkBoxesData[tracker[2]][item]);
                 setFilterData(prevValue => ({ ...prevValue, currentMarkers: [...prevValue.currentMarkers, ...markersData] }))
-                console.log("2nd lvl adding");
             } else {
                 const markersID = Object.keys(firstLvlChkBoxesData[tracker[2]])?.filter(item => item != "hideCheckboxIcon")?.map(item => firstLvlChkBoxesData[tracker[2]][item].id);
 
@@ -48,8 +45,29 @@ const SecondLvlCheckbox = ({ id, title, checked, tracker, firstLvlChkBoxesData, 
                     const markers = prevValue.currentMarkers.filter((item: any) => !markersID.includes(item.id))
                     return { ...prevValue, currentMarkers: [...markers] }
                 })
-                console.log("2nd lvl not adding");
             }
+        } else {
+            setThirdLvlCheckBoxes((prevValue: any) => {
+                const checkboxesData = prevValue?.map((item: any) => ({ ...item, checked: checked }));
+                const tempData = {
+                    ...filterData,
+                    filteringOptions: {
+                        ...filterData?.filteringOptions,
+                        [tracker[0]]: {
+                            ...filterData?.filteringOptions?.[tracker[0]],
+                            [tracker[1]]: {
+                                ...filterData?.filteringOptions?.[tracker[0]]?.[tracker[1]],
+                                [tracker[2]]: {
+                                    ...filterData?.filteringOptions?.[tracker[0]]?.[tracker[1]]?.[tracker[2]],
+                                    checkboxes: checkboxesData
+                                }
+                            }
+                        }
+                    }
+                }
+                setFilterData(tempData)
+                return checkboxesData
+            })
         }
     }, [checked])
 
